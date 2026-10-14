@@ -1,0 +1,3 @@
+manuscript	value	where	source
+P1, P3	5,121	one-to-one orthologous groups present in all four species	printed by scripts/hsf1/03_fay_parental_dimensions.R ("one-to-one in all four species: 5121")
+P3	0.28	coupling implied by the 15-min HSE discriminant (Supplementary Figure S1c)	printed by scripts/hsf1/23_l6_bound_conversion.R ("implied coupling ~0.278 is 35% of c*"), with c* = 0.80 at 15 min in data/02_processed/hsf1/b3v2_power_resolution.tsv

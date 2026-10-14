@@ -1,0 +1,2 @@
+unit_density_stated	unit_density_measured	density_ratio	analytic_punit_ratio	density_matches_analytic	classic_rate_ratio	gapped_rate_ratio	chains_ge3_stated	chains_ge3_measured	chains_ge3_ratio
+0.0362116424310216	0.0365255173378076	1.00866778985195	1.01065418637384	TRUE	1.06444906444906	1.05907172995781	481	513	1.06652806652807

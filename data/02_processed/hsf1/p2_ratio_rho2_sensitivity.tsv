@@ -1,0 +1,5 @@
+scale	timepoint	holds_rho	holds_rho2	min_lo_rho	min_lo_rho2
+level	10	FALSE	FALSE	0	0
+level	30	TRUE	FALSE	1.79384956295624	0
+response	10	FALSE	FALSE	0.428182236613355	0
+response	30	FALSE	FALSE	0	0

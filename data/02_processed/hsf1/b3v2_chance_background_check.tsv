@@ -1,0 +1,2 @@
+measured_either	stated_either	paired_diff	lo	hi	predicted_ratio_from_composition	observed_ratio_classic	observed_ratio_gapped	gapped_vs_classic_rr	rr_lo	rr_hi
+0.01037	0.00895	0.00142	0.000580000000000001	0.00226	1.03139092235242	1.1685393258427	1.14405010438413	1.54930325149303	1.29759687494866	1.87976982832242

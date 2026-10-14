@@ -1,0 +1,2 @@
+site	truth	gamma_truth	gamma_ercc	gamma_ercc_lo	gamma_ercc_hi	ercc_n	ercc_spread	gamma_star	n_features	n_levels	n_judged	T0	T1	T1_levels_pass	T2	T3	T3_levels_pass	T3_levels_judged
+MAY	gamma_ERCC	3.24587769808747	3.24587769808747	3.0714680283712	3.42028736780374	51	0.0118978673363221	3.04551796316472	22578	13	13	TRUE	TRUE	13	TRUE	TRUE	10	10

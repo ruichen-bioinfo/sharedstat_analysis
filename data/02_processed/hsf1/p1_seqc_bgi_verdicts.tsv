@@ -1,0 +1,2 @@
+site	truth	gamma_truth	gamma_ercc	gamma_ercc_lo	gamma_ercc_hi	ercc_n	ercc_spread	gamma_star	n_features	n_levels	n_judged	T0	T1	T1_levels_pass	T2	T3	T3_levels_pass	T3_levels_judged
+BGI	gamma_ERCC	3.33645532782021	3.33645532782021	3.21434538105854	3.45856527458189	49	0.0322065498396461	3.34636415590264	22567	13	12	TRUE	FALSE	11	TRUE	TRUE	11	11

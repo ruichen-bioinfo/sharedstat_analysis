@@ -1,0 +1,6 @@
+module	genes	stems	in_multi	frac_multi
+cell_cycle_growth	560	333	317	0.566071428571429
+metabolism	154	108	75	0.487012987012987
+oxidative	100	85	26	0.26
+proteostasis	194	135	88	0.45360824742268
+translation_ribosome	380	224	206	0.542105263157895

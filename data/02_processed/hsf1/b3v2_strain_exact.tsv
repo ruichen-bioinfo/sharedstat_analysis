@@ -1,0 +1,4 @@
+time	n_splits	sk_split_diff	rank_of_sk_split	frac_more_extreme
+15	20	-0.11560022559385	9	0.9
+30	20	-0.135328895574312	1.5	0.2
+60	20	-0.173891004493521	3.5	0.4

@@ -1,0 +1,67 @@
+comp_id,family,genotype,genotype_ref,temperature,temperature_ref,time,time_ref,n_rep_per_arm,main42_candidate_a,main42_candidate_b,note
+Double.KDKO_vs_Wildtype_at_25_0,genotype,Double.KDKO,Wildtype,25,25,0,0,3,FALSE,FALSE,""
+Double.KDKO_vs_Wildtype_at_37_10,genotype,Double.KDKO,Wildtype,37,37,10,10,3,TRUE,FALSE,candidate: mutants-vs-WT interpretation
+Double.KDKO_vs_Wildtype_at_37_30,genotype,Double.KDKO,Wildtype,37,37,30,30,3,TRUE,TRUE,candidate: mutants-vs-WT interpretation
+Double.KDKO_vs_Wildtype_at_42_10,genotype,Double.KDKO,Wildtype,42,42,10,10,3,TRUE,TRUE,candidate: mutants-vs-WT interpretation
+Double.KDKO_vs_Wildtype_at_42_30,genotype,Double.KDKO,Wildtype,42,42,30,30,3,TRUE,TRUE,candidate: mutants-vs-WT interpretation
+HSF1.KD_vs_Double.KDKO_at_25_0,genotype,HSF1.KD,Double.KDKO,25,25,0,0,3,FALSE,FALSE,""
+HSF1.KD_vs_Double.KDKO_at_37_10,genotype,HSF1.KD,Double.KDKO,37,37,10,10,3,FALSE,FALSE,""
+HSF1.KD_vs_Double.KDKO_at_37_30,genotype,HSF1.KD,Double.KDKO,37,37,30,30,3,FALSE,TRUE,candidate: 6pairs-x-3cond interpretation
+HSF1.KD_vs_Double.KDKO_at_42_10,genotype,HSF1.KD,Double.KDKO,42,42,10,10,3,FALSE,TRUE,candidate: 6pairs-x-3cond interpretation
+HSF1.KD_vs_Double.KDKO_at_42_30,genotype,HSF1.KD,Double.KDKO,42,42,30,30,3,FALSE,TRUE,candidate: 6pairs-x-3cond interpretation
+HSF1.KD_vs_MSN24.KO_at_25_0,genotype,HSF1.KD,MSN24.KO,25,25,0,0,3,FALSE,FALSE,""
+HSF1.KD_vs_MSN24.KO_at_37_10,genotype,HSF1.KD,MSN24.KO,37,37,10,10,3,FALSE,FALSE,""
+HSF1.KD_vs_MSN24.KO_at_37_30,genotype,HSF1.KD,MSN24.KO,37,37,30,30,3,FALSE,TRUE,candidate: 6pairs-x-3cond interpretation
+HSF1.KD_vs_MSN24.KO_at_42_10,genotype,HSF1.KD,MSN24.KO,42,42,10,10,3,FALSE,TRUE,candidate: 6pairs-x-3cond interpretation
+HSF1.KD_vs_MSN24.KO_at_42_30,genotype,HSF1.KD,MSN24.KO,42,42,30,30,3,FALSE,TRUE,candidate: 6pairs-x-3cond interpretation
+HSF1.KD_vs_Wildtype_at_25_0,genotype,HSF1.KD,Wildtype,25,25,0,0,3,FALSE,FALSE,""
+HSF1.KD_vs_Wildtype_at_37_10,genotype,HSF1.KD,Wildtype,37,37,10,10,3,TRUE,FALSE,candidate: mutants-vs-WT interpretation
+HSF1.KD_vs_Wildtype_at_37_30,genotype,HSF1.KD,Wildtype,37,37,30,30,3,TRUE,TRUE,candidate: mutants-vs-WT interpretation
+HSF1.KD_vs_Wildtype_at_42_10,genotype,HSF1.KD,Wildtype,42,42,10,10,3,TRUE,TRUE,candidate: mutants-vs-WT interpretation
+HSF1.KD_vs_Wildtype_at_42_30,genotype,HSF1.KD,Wildtype,42,42,30,30,3,TRUE,TRUE,candidate: mutants-vs-WT interpretation
+MSN24.KO_vs_Double.KDKO_at_25_0,genotype,MSN24.KO,Double.KDKO,25,25,0,0,3,FALSE,FALSE,""
+MSN24.KO_vs_Double.KDKO_at_37_10,genotype,MSN24.KO,Double.KDKO,37,37,10,10,3,FALSE,FALSE,""
+MSN24.KO_vs_Double.KDKO_at_37_30,genotype,MSN24.KO,Double.KDKO,37,37,30,30,3,FALSE,TRUE,candidate: 6pairs-x-3cond interpretation
+MSN24.KO_vs_Double.KDKO_at_42_10,genotype,MSN24.KO,Double.KDKO,42,42,10,10,3,FALSE,TRUE,candidate: 6pairs-x-3cond interpretation
+MSN24.KO_vs_Double.KDKO_at_42_30,genotype,MSN24.KO,Double.KDKO,42,42,30,30,3,FALSE,TRUE,candidate: 6pairs-x-3cond interpretation
+MSN24.KO_vs_Wildtype_at_25_0,genotype,MSN24.KO,Wildtype,25,25,0,0,3,FALSE,FALSE,""
+MSN24.KO_vs_Wildtype_at_37_10,genotype,MSN24.KO,Wildtype,37,37,10,10,3,TRUE,FALSE,candidate: mutants-vs-WT interpretation
+MSN24.KO_vs_Wildtype_at_37_30,genotype,MSN24.KO,Wildtype,37,37,30,30,3,TRUE,TRUE,candidate: mutants-vs-WT interpretation
+MSN24.KO_vs_Wildtype_at_42_10,genotype,MSN24.KO,Wildtype,42,42,10,10,3,TRUE,TRUE,candidate: mutants-vs-WT interpretation
+MSN24.KO_vs_Wildtype_at_42_30,genotype,MSN24.KO,Wildtype,42,42,30,30,3,TRUE,TRUE,candidate: mutants-vs-WT interpretation
+Double.KDKO_42_10_vs_37_10,temperature,Double.KDKO,Double.KDKO,42,37,10,10,3,FALSE,FALSE,main analysis, 42 comparisons
+Double.KDKO_42_30_vs_37_30,temperature,Double.KDKO,Double.KDKO,42,37,30,30,3,FALSE,FALSE,main analysis, 42 comparisons
+HSF1.KD_42_10_vs_37_10,temperature,HSF1.KD,HSF1.KD,42,37,10,10,3,FALSE,FALSE,main analysis, 42 comparisons
+HSF1.KD_42_30_vs_37_30,temperature,HSF1.KD,HSF1.KD,42,37,30,30,3,FALSE,FALSE,main analysis, 42 comparisons
+MSN24.KO_42_10_vs_37_10,temperature,MSN24.KO,MSN24.KO,42,37,10,10,3,FALSE,FALSE,main analysis, 42 comparisons
+MSN24.KO_42_30_vs_37_30,temperature,MSN24.KO,MSN24.KO,42,37,30,30,3,FALSE,FALSE,main analysis, 42 comparisons
+Wildtype_42_10_vs_37_10,temperature,Wildtype,Wildtype,42,37,10,10,3,FALSE,FALSE,main analysis, 42 comparisons
+Wildtype_42_30_vs_37_30,temperature,Wildtype,Wildtype,42,37,30,30,3,FALSE,FALSE,main analysis, 42 comparisons
+Double.KDKO_37_10_vs_25_0,time_series,Double.KDKO,Double.KDKO,37,25,10,0,3,FALSE,FALSE,main analysis, 42 comparisons
+Double.KDKO_37_30_vs_25_0,time_series,Double.KDKO,Double.KDKO,37,25,30,0,3,FALSE,FALSE,main analysis, 42 comparisons
+Double.KDKO_42_10_vs_25_0,time_series,Double.KDKO,Double.KDKO,42,25,10,0,3,FALSE,FALSE,main analysis, 42 comparisons
+Double.KDKO_42_30_vs_25_0,time_series,Double.KDKO,Double.KDKO,42,25,30,0,3,FALSE,FALSE,main analysis, 42 comparisons
+HSF1.KD_37_10_vs_25_0,time_series,HSF1.KD,HSF1.KD,37,25,10,0,3,FALSE,FALSE,main analysis, 42 comparisons
+HSF1.KD_37_30_vs_25_0,time_series,HSF1.KD,HSF1.KD,37,25,30,0,3,FALSE,FALSE,main analysis, 42 comparisons
+HSF1.KD_42_10_vs_25_0,time_series,HSF1.KD,HSF1.KD,42,25,10,0,3,FALSE,FALSE,main analysis, 42 comparisons
+HSF1.KD_42_30_vs_25_0,time_series,HSF1.KD,HSF1.KD,42,25,30,0,3,FALSE,FALSE,main analysis, 42 comparisons
+MSN24.KO_37_10_vs_25_0,time_series,MSN24.KO,MSN24.KO,37,25,10,0,3,FALSE,FALSE,main analysis, 42 comparisons
+MSN24.KO_37_30_vs_25_0,time_series,MSN24.KO,MSN24.KO,37,25,30,0,3,FALSE,FALSE,main analysis, 42 comparisons
+MSN24.KO_42_10_vs_25_0,time_series,MSN24.KO,MSN24.KO,42,25,10,0,3,FALSE,FALSE,main analysis, 42 comparisons
+MSN24.KO_42_30_vs_25_0,time_series,MSN24.KO,MSN24.KO,42,25,30,0,3,FALSE,FALSE,main analysis, 42 comparisons
+Wildtype_37_10_vs_25_0,time_series,Wildtype,Wildtype,37,25,10,0,3,FALSE,FALSE,main analysis, 42 comparisons
+Wildtype_37_30_vs_25_0,time_series,Wildtype,Wildtype,37,25,30,0,3,FALSE,FALSE,main analysis, 42 comparisons
+Wildtype_42_10_vs_25_0,time_series,Wildtype,Wildtype,42,25,10,0,3,FALSE,FALSE,main analysis, 42 comparisons
+Wildtype_42_30_vs_25_0,time_series,Wildtype,Wildtype,42,25,30,0,3,FALSE,FALSE,main analysis, 42 comparisons
+Wildtype_37_30_vs_37_10,time,Wildtype,Wildtype,37,37,30,10,3,FALSE,FALSE,time contrast
+Wildtype_42_30_vs_42_10,time,Wildtype,Wildtype,42,42,30,10,3,FALSE,FALSE,time contrast
+HSF1.KD_37_30_vs_37_10,time,HSF1.KD,HSF1.KD,37,37,30,10,3,FALSE,FALSE,time contrast
+HSF1.KD_42_30_vs_42_10,time,HSF1.KD,HSF1.KD,42,42,30,10,3,FALSE,FALSE,time contrast
+MSN24.KO_37_30_vs_37_10,time,MSN24.KO,MSN24.KO,37,37,30,10,3,FALSE,FALSE,time contrast
+MSN24.KO_42_30_vs_42_10,time,MSN24.KO,MSN24.KO,42,42,30,10,3,FALSE,FALSE,time contrast
+Double.KDKO_37_30_vs_37_10,time,Double.KDKO,Double.KDKO,37,37,30,10,3,FALSE,FALSE,time contrast
+Double.KDKO_42_30_vs_42_10,time,Double.KDKO,Double.KDKO,42,42,30,10,3,FALSE,FALSE,time contrast
+HSF1.KD_vs_Wildtype_timechange_37_30_vs_37_10,time_x_genotype,HSF1.KD,Wildtype,37,37,30,10,3,FALSE,FALSE,(g30-g10)-(WT30-WT10)
+MSN24.KO_vs_Wildtype_timechange_37_30_vs_37_10,time_x_genotype,MSN24.KO,Wildtype,37,37,30,10,3,FALSE,FALSE,(g30-g10)-(WT30-WT10)
+HSF1.KD_vs_Wildtype_timechange_42_30_vs_42_10,time_x_genotype,HSF1.KD,Wildtype,42,42,30,10,3,FALSE,FALSE,(g30-g10)-(WT30-WT10)
+MSN24.KO_vs_Wildtype_timechange_42_30_vs_42_10,time_x_genotype,MSN24.KO,Wildtype,42,42,30,10,3,FALSE,FALSE,(g30-g10)-(WT30-WT10)

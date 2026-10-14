@@ -1,0 +1,10 @@
+scale	condition	n_pairings	zero_pairings	loro_all_positive	min_lo_adj	present
+level	25_0	3	0	TRUE	0	FALSE
+level	37_10	3	0	TRUE	0	FALSE
+level	37_30	3	0	TRUE	0.688081021223677	TRUE
+level	42_10	3	2	FALSE	0	FALSE
+level	42_30	3	1	FALSE	0	FALSE
+response	37_10	18	0	TRUE	0.240913973138442	TRUE
+response	37_30	18	2	FALSE	0	FALSE
+response	42_10	18	9	FALSE	0	FALSE
+response	42_30	18	4	FALSE	0	FALSE

@@ -1,0 +1,5 @@
+scale	timepoint	n_pairings	min_lo_ratio	holds
+level	10	3	0	FALSE
+level	30	3	1.67065117458076	TRUE
+response	10	18	0.368992291332745	FALSE
+response	30	18	0	FALSE

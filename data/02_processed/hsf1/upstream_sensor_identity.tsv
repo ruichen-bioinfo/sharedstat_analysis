@@ -1,0 +1,3 @@
+gene	comparable_full_length	len_Sc	len_Sp	len_Sk	len_Su	ident_vs_Sc_Sp	ident_vs_Sc_Sk	ident_vs_Sc_Su	focal_ok
+SSA1	FALSE	642	642	642	645	0.989096573208723	0.981308411214953		TRUE
+MID2	FALSE	376	383	382	380				

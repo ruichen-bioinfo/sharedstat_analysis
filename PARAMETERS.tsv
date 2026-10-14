@@ -1,0 +1,320 @@
+script	line	parameter	value	meaning	used_for
+scripts/crossspecies/02_fay_multimethod.R	56	ALPHA	0.05	Adjusted p-value cut-off for counting significant genes per model term.	fay_multimethod_summary.tsv
+scripts/crossspecies/02_fay_multimethod.R	57	MIN_CNT	10	Minimum read count a gene needs in a sample to count towards the expression filter.	fay_multimethod.tsv.gz;fay_multimethod_summary.tsv
+scripts/crossspecies/02_fay_multimethod.R	58	MIN_SMP	3	Minimum number of samples at that count for a gene to be analysed.	fay_multimethod.tsv.gz;fay_multimethod_summary.tsv
+scripts/crossspecies/02_fay_multimethod.R	59	SEED	20260905	Seed value passed to set.seed at the start of the script.	fay_multimethod.tsv.gz;fay_multimethod_summary.tsv
+scripts/crossspecies/02_fay_multimethod.R	60	random seed	set.seed(SEED)	Fixes the random number stream for the script's resampling and random draws.	fay_multimethod.tsv.gz;fay_multimethod_summary.tsv
+scripts/crossspecies/06_module_bridge.R	53	ALPHA	0.05	Adjusted p-value cut-off for calling genes heat-induced and Hsf1- or Msn2/4-dependent.	yeast_modules_37_30.tsv;yeast_module_agreement_37_30.tsv;module_divergence_37_30.tsv
+scripts/crossspecies/08_thermophile_allele_polarity.R	70	ALPHA	0.05	Adjusted p-value cut-off for calling a gene a heat responder before the polarity test.	allele_polarity.tsv;allele_polarity_by_module.tsv;allele_effect_cross_replication.tsv
+scripts/crossspecies/08_thermophile_allele_polarity.R	73	CRYO	"c(""Sk"", ""Su"")"	Species treated as cold-tolerant (S. kudriavzevii, S. uvarum); the others count as heat-tolerant.	allele_polarity.tsv;allele_polarity_by_module.tsv;allele_effect_cross_replication.tsv
+scripts/crossspecies/102_p1_table1_uncertainty.R	10	partner	"c(ScxSp = ""SkxSu"", SkxSu = ""ScxSp"", ScxSu = ""SpxSk"", SpxSk = ""ScxSu"", ScxSk = ""SpxSu"", SpxSu = ""ScxSk"")"	For each hybrid, its co-pooled partner is excluded with it from the instrument built from other hybrids.	p1_table1_uncertainty.tsv
+scripts/crossspecies/102d_p1_joint_cluster_bootstrap.R	8	PRIOR	2	Pseudocount (prior count) added before log-CPM, damping fold changes of low-count genes.	p1_table1_joint_bootstrap.tsv
+scripts/crossspecies/102d_p1_joint_cluster_bootstrap.R	9	partner	"c(ScxSp = ""SkxSu"", SkxSu = ""ScxSp"", ScxSu = ""SpxSk"", SpxSk = ""ScxSu"", ScxSk = ""SpxSu"", SpxSu = ""ScxSk"")"	For each hybrid, its co-pooled partner is excluded with it from the instrument built from other hybrids.	p1_table1_joint_bootstrap.tsv
+scripts/crossspecies/102d_p1_joint_cluster_bootstrap.R	10	NB	2000L	Number of gene-cluster bootstrap resamples.	p1_table1_joint_bootstrap.tsv
+scripts/crossspecies/102d_p1_joint_cluster_bootstrap.R	42	random seed	set.seed(20261004L)	Fixes gene clustering and bootstrap draws for each number of clusters.	p1_table1_joint_bootstrap.tsv
+scripts/crossspecies/11_gain_iv.R	70	ALPHA	0.05	Adjusted p-value cut-off for significant genes, and for gene selection in the filtered run.	gain_iv_padj_filter.tsv;gain_components.tsv;polarity_independent_mask.tsv
+scripts/crossspecies/11_gain_iv.R	71	partner	"c(ScxSp = ""SkxSu"", SkxSu = ""ScxSp"", ScxSu = ""SpxSk"", SpxSk = ""ScxSu"", ScxSk = ""SpxSu"", SpxSu = ""ScxSk"")"	For each hybrid, its co-pooled partner is excluded with it from the instrument built from other hybrids.	gain_iv.tsv;polarity_independent_mask.tsv
+scripts/crossspecies/11_gain_iv.R	77	random seed	set.seed(20260905)	Fixes the gene-level bootstrap of the instrumental-variable slope.	gain_iv.tsv;gain_iv_padj_filter.tsv
+scripts/crossspecies/12_iv_breakdown.R	21	partner	"c(ScxSp = ""SkxSu"", SkxSu = ""ScxSp"", ScxSu = ""SpxSk"", SpxSk = ""ScxSu"", ScxSk = ""SpxSu"", SpxSu = ""ScxSk"")"	For each hybrid, its co-pooled partner is excluded with it from the instrument built from other hybrids.	iv_breakdown_by_method.tsv;iv_breakdown.tsv
+scripts/crossspecies/12_iv_breakdown.R	52	qs	seq(0, 0.5, by = 1e-04)	Grid of shifts searched for the smallest common shift that changes the hybrid ranking.	iv_breakdown.tsv
+scripts/crossspecies/14_mechanism_tests.R	52	ALPHA	0.05	Adjusted p-value cut-off for selecting genes in the regulon comparison.	gain_by_regulon.tsv
+scripts/crossspecies/14_mechanism_tests.R	53	partner	"c(ScxSp = ""SkxSu"", SkxSu = ""ScxSp"", ScxSu = ""SpxSk"", SpxSk = ""ScxSu"", ScxSk = ""SpxSu"", SpxSu = ""ScxSk"")"	For each hybrid, its co-pooled partner is excluded with it from the instrument built from other hybrids.	gain_by_regulon.tsv
+scripts/crossspecies/14_mechanism_tests.R	59	random seed	set.seed(20260905)	Fixes the hybrid-label permutations of the species decomposition test.	species_2x2_decomposition.tsv;gain_2x2_decomposition.tsv
+scripts/crossspecies/14_mechanism_tests.R	232	NB	10	Number of quantile bins of the instrument used to check the functional form.	gain_functional_form.tsv;gain_binned_means.tsv
+scripts/hsf1/01_epistasis_decomposition.R	80	ALPHA	0.05	Adjusted p-value cut-off for calling genes heat-induced and dependent on Hsf1, Msn2/4 or both.	hsf1_epistasis_classes_37_30.tsv;hsf1_core_set_37_30.tsv;hsf1_epistasis_agreement_37_30.tsv
+scripts/hsf1/02_core_function.R	53	ALPHA	0.05	Adjusted p-value cut-off for a significantly enriched GO term.	hsf1_core_go_enrichment_37_30.tsv
+scripts/hsf1/02_core_function.R	54	MIN_TERM	5	Smallest GO term size (genes) that is tested.	hsf1_core_go_enrichment_37_30.tsv
+scripts/hsf1/02_core_function.R	55	MAX_TERM	500	Largest GO term size (genes) that is tested; larger terms are too general.	hsf1_core_go_enrichment_37_30.tsv
+scripts/hsf1/03_fay_parental_dimensions.R	47	ANCHOR	37_30	Heat condition (37 C, 30 min) whose gene response classes define the gene groups compared.	fay_parental_amplitude_37_30.tsv;fay_parental_noise_corrected_37_30.tsv;fay_parental_core_vs_matched_37_30.tsv
+scripts/hsf1/03_fay_parental_dimensions.R	54	TP	c(15L, 30L, 60L)	Minutes after the heat shift analysed: 15, 30 and 60.	fay_parental_amplitude_37_30.tsv;fay_parental_noise_corrected_37_30.tsv;fay_parental_core_vs_matched_37_30.tsv
+scripts/hsf1/03_fay_parental_dimensions.R	55	PRIOR	2	Pseudocount (prior count) added before log-CPM, damping fold changes of low-count genes.	fay_parental_lfc_37_30.tsv.gz;fay_parental_amplitude_37_30.tsv
+scripts/hsf1/03_fay_parental_dimensions.R	56	MINCPM	1	Minimum counts per million in four libraries of every species for a gene to be kept.	fay_parental_lfc_37_30.tsv.gz;fay_parental_amplitude_37_30.tsv
+scripts/hsf1/03_fay_parental_dimensions.R	438	NBOOT	2000L	Number of gene-level bootstrap resamples for confidence intervals of divergence ratios.	fay_parental_composition_37_30.tsv;fay_parental_core_vs_matched_37_30.tsv
+scripts/hsf1/03_fay_parental_dimensions.R	439	random seed	set.seed(20260905)	Fixes the gene-level bootstrap resamples.	fay_parental_composition_37_30.tsv;fay_parental_core_vs_matched_37_30.tsv
+scripts/hsf1/04_divergence_by_dependency.R	92	ANCHOR	37_30	Heat condition (37 C, 30 min) whose gene response classes define the gene groups compared.	a5_cis_ratio_37_30.tsv;a5_cis_ratio_calibrated_37_30.tsv;a5_cis_noise_corrected_37_30.tsv
+scripts/hsf1/04_divergence_by_dependency.R	95	TP	c(15L, 30L, 60L)	Minutes after the heat shift analysed: 15, 30 and 60.	a5_cis_ratio_37_30.tsv;a5_cis_ratio_calibrated_37_30.tsv;a5_cis_noise_corrected_37_30.tsv
+scripts/hsf1/04_divergence_by_dependency.R	96	PRIOR	2	Pseudocount (prior count) added before log-CPM, damping fold changes of low-count genes.	a5_cis_dod_37_30.tsv.gz;a5_cis_noise_corrected_37_30.tsv
+scripts/hsf1/04_divergence_by_dependency.R	97	MINCPM	1	Minimum counts per million in four libraries of each allele for a gene to be kept.	a5_cis_dod_37_30.tsv.gz;a5_cis_noise_corrected_37_30.tsv
+scripts/hsf1/04_divergence_by_dependency.R	98	ALPHA	0.05	Adjusted p-value cut-off for counting genes with a significant interaction.	a5_count_vs_threshold_free_37_30.tsv
+scripts/hsf1/04_divergence_by_dependency.R	99	NBOOT	2000	Number of gene-level bootstrap resamples for confidence intervals of divergence ratios.	a5_cis_ratio_37_30.tsv;a5_cis_ratio_calibrated_37_30.tsv;a5_cis_nmatched_37_30.tsv
+scripts/hsf1/04_divergence_by_dependency.R	100	SNR_MIN	1.3	Minimum signal-to-noise ratio both gene groups need before their ratio is interpreted.	a5_cis_ratio_37_30.tsv;a5_cis_ratio_by_hybrid_37_30.tsv
+scripts/hsf1/04_divergence_by_dependency.R	101	random seed	set.seed(20260905L)	Fixes the random number stream for the script's resampling and random draws.	a5_cis_ratio_37_30.tsv;a5_cis_ratio_calibrated_37_30.tsv;a5_cis_noise_corrected_37_30.tsv
+scripts/hsf1/04_divergence_by_dependency.R	699	NDEC	8L	Number of expression-amplitude bins used to fit how divergence scales with amplitude.	a5_dod_amplitude_scaling_37_30.tsv
+scripts/hsf1/04_divergence_by_dependency.R	817	NB_CAL	600L	Number of resamples per injected effect size in the power calibration.	a5_power_calibration_37_30.tsv
+scripts/hsf1/04_divergence_by_dependency.R	830	random seed	set.seed(20260905L + 7L)	Fixes the random gene subset drawn for the power calibration.	a5_power_calibration_37_30.tsv
+scripts/hsf1/05_cis_trans_decomposition.R	77	ANCHOR	37_30	Heat condition (37 C, 30 min) whose gene response classes define the gene groups compared.	a6_cis_trans_37_30.tsv.gz;a6_cis_share_37_30.tsv;a6_stratum_ratio_by_axis_37_30.tsv
+scripts/hsf1/05_cis_trans_decomposition.R	80	TP	c(15L, 30L, 60L)	Minutes after the heat shift analysed: 15, 30 and 60.	a6_cis_trans_37_30.tsv.gz;a6_cis_share_37_30.tsv;a6_stratum_ratio_by_axis_37_30.tsv
+scripts/hsf1/05_cis_trans_decomposition.R	81	PRIOR	2	Pseudocount (prior count) added before log-CPM, damping fold changes of low-count genes.	a6_cis_trans_37_30.tsv.gz;a6_axis_amplitudes_37_30.tsv
+scripts/hsf1/05_cis_trans_decomposition.R	82	MINCPM	1	Minimum counts per million in four libraries per species or allele for a gene to be kept.	a6_cis_trans_37_30.tsv.gz;a6_axis_amplitudes_37_30.tsv
+scripts/hsf1/05_cis_trans_decomposition.R	83	NBOOT	2000	Number of gene-level bootstrap resamples for the cis share and group ratios.	a6_cis_share_37_30.tsv;a6_stratum_ratio_by_axis_37_30.tsv
+scripts/hsf1/05_cis_trans_decomposition.R	84	NB_CAL	600L	Number of resamples per injected effect size in the power calibration.	a6_power_calibration_37_30.tsv
+scripts/hsf1/05_cis_trans_decomposition.R	85	NDEC	8L	Number of expression-amplitude bins used to fit how divergence scales with amplitude.	a6_amplitude_scaling_37_30.tsv
+scripts/hsf1/05_cis_trans_decomposition.R	87	random seed	set.seed(20260906L)	Fixes the random number stream for the script's resampling and random draws.	a6_cis_trans_37_30.tsv.gz;a6_cis_share_37_30.tsv;a6_stratum_ratio_by_axis_37_30.tsv
+scripts/hsf1/05_cis_trans_decomposition.R	589	random seed	set.seed(20260906L + 11L)	Fixes the random gene subset drawn for the power calibration.	a6_power_calibration_37_30.tsv
+scripts/hsf1/05_cis_trans_decomposition.R	756	NPERM	1000L	Number of random size-matched gene sets in the null for the core-set comparison.	a6_nmatched_37_30.tsv
+scripts/hsf1/07_hsf1_locus_extract.R	53	WIN	1000L	Upstream length (bp) that must be present on the contig for the HSF1 locus to pass.	hsf1_locus_qc.tsv
+scripts/hsf1/08_hsf1_domain_divergence.R	111	GO	11	Gap-opening penalty for the global protein alignment with BLOSUM62 scores.	hsf1_whole_protein_identity.tsv;hsf1_domain_identity.tsv;hsf1_divergent_residues.tsv
+scripts/hsf1/08_hsf1_domain_divergence.R	111	GE	1	Gap-extension penalty for the global protein alignment with BLOSUM62 scores.	hsf1_whole_protein_identity.tsv;hsf1_domain_identity.tsv;hsf1_divergent_residues.tsv
+scripts/hsf1/08_hsf1_domain_divergence.R	287	W	30L	Width (residues) of the sliding window for protein identity.	hsf1_sliding_identity.tsv
+scripts/hsf1/08_hsf1_domain_divergence.R	287	STEP	10L	Step (residues) between sliding windows for protein identity.	hsf1_sliding_identity.tsv
+scripts/hsf1/09_promoter_hse_architecture.R	85	WIN	600L	Promoter length (bp) taken upstream of the start codon, clipped at the next upstream gene.	b3_window_stats.tsv;b3_hse_counts.tsv.gz;b3_promoter_divergence.tsv.gz
+scripts/hsf1/09_promoter_hse_architecture.R	86	KMER	4L	Word length k for the alignment-free k-mer promoter divergence.	b3_promoter_divergence.tsv.gz
+scripts/hsf1/09_promoter_hse_architecture.R	89	NBOOT	2000L	Number of gene-level bootstrap resamples for the cis and trans divergence ratios.	b3_arms_cis_vs_trans.tsv
+scripts/hsf1/09_promoter_hse_architecture.R	90	NPERM	1000L	Number of label permutations in the matched permutation test.	b3_matched_permutation.tsv
+scripts/hsf1/09_promoter_hse_architecture.R	92	TP	c(15L, 30L, 60L)	Minutes after the heat shift analysed: 15, 30 and 60.	b3_arms_cis_vs_trans.tsv;b3_matched_permutation.tsv;b3_power_calibration.tsv
+scripts/hsf1/09_promoter_hse_architecture.R	93	random seed	set.seed(20260906L)	Fixes the random number stream for the script's resampling and random draws.	b3_promoter_divergence.tsv.gz;b3_arms_cis_vs_trans.tsv;b3_matched_permutation.tsv
+scripts/hsf1/09_promoter_hse_architecture.R	526	NB_PWR	400L	Number of resamples per injected effect size in the power calibration.	b3_power_calibration.tsv
+scripts/hsf1/100_p2_temperature_difference.R	9	NB	2000L	Number of gene bootstrap resamples for the interaction amplitude.	p2_tempdiff_amplitude.tsv;p2_tempdiff_amplitude_bypairing.tsv
+scripts/hsf1/100_p2_temperature_difference.R	9	random seed	set.seed(20261002L)	Fixes the random number stream for the script's resampling and random draws.	p2_tempdiff_amplitude.tsv;p2_tempdiff_amplitude_bypairing.tsv
+scripts/hsf1/100_p2_temperature_difference.R	19	SG	c(1, -1, -1, 1)	Contrast weights for double mutant, Hsf1-depleted, msn2/4-deleted, wild type: the genetic interaction.	p2_tempdiff_amplitude.tsv;p2_tempdiff_amplitude_bypairing.tsv;p2_tempdiff_classes.tsv
+scripts/hsf1/100_p2_temperature_difference.R	44	random seed	set.seed(1)	Fixes which 2000 genes are subsampled to estimate inter-gene correlation.	p2_tempdiff_classes.tsv
+scripts/hsf1/101_p1_reliability_vs_iv_sim.R	10	n	2000L	Number of simulated genes per dataset.	p1_reliability_vs_iv_sim.tsv
+scripts/hsf1/101_p1_reliability_vs_iv_sim.R	10	NR	300L	Number of simulated datasets per scenario and parameter setting.	p1_reliability_vs_iv_sim.tsv
+scripts/hsf1/101_p1_reliability_vs_iv_sim.R	10	random seed	set.seed(20261002L)	Fixes the simulated datasets.	p1_reliability_vs_iv_sim.tsv
+scripts/hsf1/103_p2_torc1_readout.R	9	NB	2000L	Number of bootstrap resamples for confidence intervals of medians.	p2_torc1_readout.tsv
+scripts/hsf1/103_p2_torc1_readout.R	9	random seed	set.seed(20261003L)	Fixes the bootstrap resamples.	p2_torc1_readout.tsv
+scripts/hsf1/103b_p2_torc1_panel.R	23	PANEL	"c(""GAP1"", ""MEP2"", ""DAL80"", ""GDH2"", ""DAL5"", ""CIT2"")"	Marker genes whose fold changes are reported as the TORC1 readout panel.	p2_torc1_panel.tsv
+scripts/hsf1/104_p2_class_split.R	17	SG	c(1, -1, -1, 1)	Contrast weights for double mutant, Hsf1-depleted, msn2/4-deleted, wild type: the genetic interaction.	p2_class_split.tsv
+scripts/hsf1/104_p2_class_split.R	17	A	0.05	Adjusted p-value cut-off for calling genes induced and regulator-dependent.	p2_class_split.tsv
+scripts/hsf1/104b_p2_class_split.R	11	SG	c(1, -1, -1, 1)	Contrast weights for double mutant, Hsf1-depleted, msn2/4-deleted, wild type: the genetic interaction.	p2_class_split_b.tsv
+scripts/hsf1/104b_p2_class_split.R	11	A	0.05	Adjusted p-value cut-off for calling genes induced and regulator-dependent.	p2_class_split_b.tsv
+scripts/hsf1/105_p3_null_calibration.R	9	NDRAW	200L	Number of random gene sets drawn per timepoint and set size.	p3_null_calibration.tsv;p3_null_calibration_draws.tsv
+scripts/hsf1/105_p3_null_calibration.R	9	SIZES	c(134L, 83L)	Sizes of the random gene sets, matching the two gene groups compared (134 and 83).	p3_null_calibration.tsv;p3_null_calibration_draws.tsv
+scripts/hsf1/105_p3_null_calibration.R	9	random seed	set.seed(20261003L)	Generates the per-draw seeds of the random gene sets.	p3_null_calibration.tsv;p3_null_calibration_draws.tsv
+scripts/hsf1/105_p3_null_calibration.R	11	random seed	set.seed(j$seed)	Fixes the random gene set of each draw.	p3_null_calibration.tsv;p3_null_calibration_draws.tsv
+scripts/hsf1/105b_p3_power_injection.R	9	SIZES	c(134L, 83L)	Sizes of the random gene sets that receive the injected signal (134 and 83 genes).	p3_power_injection.tsv;p3_power_injection_draws.tsv
+scripts/hsf1/105b_p3_power_injection.R	9	random seed	set.seed(20261003L)	Fixes random draws for a built-in check that is printed to the log, not written to a table.	
+scripts/hsf1/105b_p3_power_injection.R	11	random seed	set.seed(j$seed)	Fixes random draws for a built-in check that is printed to the log, not written to a table.	
+scripts/hsf1/105b_p3_power_injection.R	16	R_TRUE	c(1.25, 1.5, 2)	True signal ratios injected into the random gene sets.	p3_power_injection.tsv;p3_power_injection_draws.tsv
+scripts/hsf1/105b_p3_power_injection.R	16	NP	100L	Number of injected random gene sets per timepoint, set size and signal ratio.	p3_power_injection.tsv;p3_power_injection_draws.tsv
+scripts/hsf1/105b_p3_power_injection.R	16	random seed	set.seed(20261004L)	Generates the per-draw seeds of the injected gene sets.	p3_power_injection.tsv;p3_power_injection_draws.tsv
+scripts/hsf1/105b_p3_power_injection.R	18	random seed	set.seed(j$seed)	Fixes the random gene set of each injection draw.	p3_power_injection.tsv;p3_power_injection_draws.tsv
+scripts/hsf1/108_p3_time_invariant_null.R	7	NS	1000L	Number of simulated datasets under the time-invariant null.	p3_time_invariant_null.tsv;p3_noise_floor_hits.tsv
+scripts/hsf1/108_p3_time_invariant_null.R	7	random seed	set.seed(20261004L)	Fixes the null simulations.	p3_time_invariant_null.tsv;p3_noise_floor_hits.tsv
+scripts/hsf1/112_p3_constant_share_null.R	34	NS	as.integer(Sys.getenv("NSIM", "1000"))	Number of simulated datasets under the constant-share null.	p3_constant_share_null.tsv
+scripts/hsf1/112_p3_constant_share_null.R	34	random seed	set.seed(20261013L)	Fixes the constant-share null simulations.	p3_constant_share_null.tsv
+scripts/hsf1/112_p3_constant_share_null.R	34	PRIOR	2	Prior count for log-CPM, as in script 05.	p3_constant_share_null.tsv
+scripts/hsf1/109_p1_arm_error_covariance.R	5	random seed	set.seed(20261005L)	Fixes the random number stream for the script's resampling and random draws.	p1_arm_error_covariance.tsv
+scripts/hsf1/109_p1_arm_error_covariance.R	7	TP	c(15L, 30L, 60L)	Minutes after the heat shift analysed: 15, 30 and 60.	p1_arm_error_covariance.tsv
+scripts/hsf1/109_p1_arm_error_covariance.R	38	B	1000L	Number of gene bootstrap resamples for the error covariance.	p1_arm_error_covariance.tsv
+scripts/hsf1/10_promoter_hse_architecture_v2.R	123	WIN	600L	Promoter length (bp) taken upstream of the start codon, clipped at the next upstream gene.	b3v2_window_stats.tsv;b3v2_hse_sites.tsv.gz;b3v2_site_turnover.tsv.gz
+scripts/hsf1/10_promoter_hse_architecture_v2.R	124	ANCHOR_TOL	50L	Heat shock elements within 50 bp in distance to the start codon count as the same site.	b3v2_site_turnover.tsv.gz
+scripts/hsf1/10_promoter_hse_architecture_v2.R	125	FLANK	30L	Flank (bp) around a site used for local alignment when the site match is ambiguous.	b3v2_site_turnover.tsv.gz
+scripts/hsf1/10_promoter_hse_architecture_v2.R	126	AMBIG_MARGIN	10L	Two candidate matches closer than this distance difference (bp) are treated as ambiguous.	b3v2_site_turnover.tsv.gz
+scripts/hsf1/10_promoter_hse_architecture_v2.R	127	LC_MAX	0.5	Low-complexity score at or above which a site window is not interpreted.	b3v2_site_turnover.tsv.gz
+scripts/hsf1/10_promoter_hse_architecture_v2.R	128	NBOOT	1000L	Number of gene-level bootstrap resamples for the cis and trans divergence ratios.	b3v2_arms_cis_vs_trans.tsv
+scripts/hsf1/10_promoter_hse_architecture_v2.R	129	NPERM	1000L	Number of label permutations in the positive-control test and the observed discriminant null.	b3v2_positive_control_test.tsv;b3v2_discriminant_null.tsv
+scripts/hsf1/10_promoter_hse_architecture_v2.R	130	NPERM_SWEEP	300L	Number of label permutations per randomised substrate and injected effect in the power sweep.	b3v2_power_calibration.tsv;b3v2_power_resolution_script10_10substrate.tsv
+scripts/hsf1/10_promoter_hse_architecture_v2.R	131	N_SUB	10L	Number of independent randomised substrates in the power calibration.	b3v2_power_calibration.tsv;b3v2_power_resolution_script10_10substrate.tsv
+scripts/hsf1/10_promoter_hse_architecture_v2.R	135	NRAND	3000L	Number of composition-matched random promoters for the chance expectation.	b3v2_chance_calibration.tsv
+scripts/hsf1/10_promoter_hse_architecture_v2.R	136	BETA_CIS	0.275	Amplitude exponent for the normalisation applied only if gene groups are amplitude-imbalanced.	b3v2_discriminant_null.tsv;b3v2_power_calibration.tsv;b3v2_arms_cis_vs_trans.tsv
+scripts/hsf1/10_promoter_hse_architecture_v2.R	137	CHANCE_MIN	2	Minimum observed-to-random ratio for a promoter metric to be used as a primary readout.	b3v2_chance_calibration.tsv
+scripts/hsf1/10_promoter_hse_architecture_v2.R	138	TP	c(15L, 30L, 60L)	Minutes after the heat shift analysed: 15, 30 and 60.	b3v2_arms_cis_vs_trans.tsv;b3v2_discriminant_null.tsv;b3v2_power_calibration.tsv
+scripts/hsf1/10_promoter_hse_architecture_v2.R	139	random seed	set.seed(20260906L)	Fixes the random number stream for the script's resampling and random draws.	b3v2_chance_calibration.tsv;b3v2_window_stats.tsv;b3v2_hse_sites.tsv.gz
+scripts/hsf1/10_promoter_hse_architecture_v2.R	345	random seed	set.seed(11L)	Fixes random sequences for the built-in alignment self-test; no table depends on it.	
+scripts/hsf1/10_promoter_hse_architecture_v2.R	355	random seed	set.seed(20260906L)	Restores the main random stream after the self-test.	b3v2_site_turnover.tsv.gz;b3v2_arms_cis_vs_trans.tsv;b3v2_power_calibration.tsv
+scripts/hsf1/10_promoter_hse_architecture_v2.R	490	random seed	set.seed(4242L)	Fixes shuffled windows used to set the local-alignment homology score threshold.	b3v2_site_turnover.tsv.gz
+scripts/hsf1/10_promoter_hse_architecture_v2.R	499	random seed	set.seed(20260906L)	Fixes random draws in site pairing and the downstream permutation tests.	b3v2_site_turnover.tsv.gz;b3v2_positive_control_test.tsv;b3v2_discriminant_null.tsv
+scripts/hsf1/10_promoter_hse_architecture_v2.R	836	C_GRID	c(0, 0.02, 0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.8)	Grid of injected effect sizes in the power calibration.	b3v2_power_calibration.tsv;b3v2_power_resolution_script10_10substrate.tsv
+scripts/hsf1/10_promoter_hse_architecture_v2.R	837	random seed	set.seed(90610L)	Fixes the randomised substrates and permutations of the power calibration.	b3v2_power_calibration.tsv;b3v2_power_resolution_script10_10substrate.tsv
+scripts/hsf1/10_promoter_hse_architecture_v2.R	933	MIN_GRP	30L	Minimum genes per group for a secondary split to be interpreted.	b3v2_secondary_splits.tsv
+scripts/hsf1/111_p3_composition_check.R	7	NS	1000L	Number of simulated datasets for the species-composition null.	p3_composition_check.tsv;p3_composition_medians.tsv
+scripts/hsf1/111_p3_composition_check.R	42	random seed	set.seed(20261004L)	Fixes the null simulations.	p3_composition_check.tsv;p3_composition_medians.tsv
+scripts/hsf1/11_b3v2_resolution_bound.R	21	TP	c(15L, 30L, 60L)	Minutes after the heat shift analysed: 15, 30 and 60.	b3v2_power_resolution.tsv
+scripts/hsf1/11_chance_calibration_highres.R	40	NRAND	100000L	Number of random promoters scanned for the chance expectation.	b3v2_chance_calibration_highres.tsv;b3v2_chance_background_check.tsv
+scripts/hsf1/11_chance_calibration_highres.R	41	NBOOT_RATIO	2000L	Number of bootstrap resamples for the observed-to-random ratio.	b3v2_chance_calibration_highres.tsv;b3v2_chance_background_check.tsv
+scripts/hsf1/11_chance_calibration_highres.R	42	WIN	600L	Promoter length (bp) taken upstream of the start codon, clipped at the next upstream gene.	b3v2_chance_calibration_highres.tsv;b3v2_chance_background_check.tsv
+scripts/hsf1/11_chance_calibration_highres.R	43	random seed	set.seed(20260906L)	Fixes the random number stream for the script's resampling and random draws.	b3v2_chance_calibration_highres.tsv;b3v2_chance_background_check.tsv
+scripts/hsf1/11_chance_calibration_highres.R	167	BG_S	c(0.31, 0.19, 0.19, 0.31)	Base frequencies (A, C, G, T) of the stated random-sequence background.	b3v2_chance_calibration_highres.tsv;b3v2_chance_background_check.tsv
+scripts/hsf1/13_resolution_shard.R	37	NPERM_SWEEP	300L	Number of label permutations per randomised substrate and injected effect.	b3v2_resolution_shard1.tsv;b3v2_resolution_shard2.tsv;b3v2_resolution_shard3.tsv
+scripts/hsf1/13_resolution_shard.R	39	TP	c(15L, 30L, 60L)	Minutes after the heat shift analysed: 15, 30 and 60.	b3v2_resolution_shard1.tsv;b3v2_resolution_shard2.tsv;b3v2_resolution_shard3.tsv
+scripts/hsf1/13_resolution_shard.R	40	C_GRID	c(0, 0.02, 0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.8)	Grid of injected effect sizes in the power calibration.	b3v2_resolution_shard1.tsv;b3v2_resolution_shard2.tsv;b3v2_resolution_shard3.tsv
+scripts/hsf1/13_resolution_shard.R	103	random seed	set.seed(90610L + 1000L * SHARD)	Fixes the randomised substrates of each shard; each shard gets its own offset.	b3v2_resolution_shard1.tsv;b3v2_resolution_shard2.tsv;b3v2_resolution_shard3.tsv
+scripts/hsf1/14_background_amplification_diagnostic.R	40	NRAND	100000L	Number of random sequences scanned per background composition.	b3v2_background_amplification.tsv;b3v2_background_runlength.tsv
+scripts/hsf1/14_background_amplification_diagnostic.R	41	random seed	set.seed(20260906L)	Fixes the random number stream for the script's resampling and random draws.	b3v2_background_amplification.tsv;b3v2_background_runlength.tsv
+scripts/hsf1/15_module_regulatory_profile.R	63	TP	c(15L, 30L, 60L)	Minutes after the heat shift analysed: 15, 30 and 60.	s4_module_amplitude.tsv;s4_thermal_ordering.tsv;s4_module_divergence_beta.tsv
+scripts/hsf1/15_module_regulatory_profile.R	65	THERMAL	"c(Sc = ""thermophilic"", Sp = ""thermophilic"", Sk = ""cryophilic"", Su = ""cryophilic"")"	Classes S. cerevisiae and S. paradoxus as heat-tolerant, S. kudriavzevii and S. uvarum as cold-tolerant.	s4_thermal_ordering.tsv
+scripts/hsf1/15_module_regulatory_profile.R	67	BETAS	c(0, 0.25, 0.5, 0.75, 1)	Amplitude exponents at which module divergence ratios are computed.	s4_module_divergence_beta.tsv;s4_uniformity_test.tsv
+scripts/hsf1/15_module_regulatory_profile.R	68	NBOOT	1000L	Number of gene bootstrap resamples for module divergence ratios.	s4_module_divergence_beta.tsv
+scripts/hsf1/15_module_regulatory_profile.R	69	NPERM	1000L	Number of module-label permutations in the uniformity test.	s4_uniformity_test.tsv
+scripts/hsf1/15_module_regulatory_profile.R	70	MIN_MOD	20L	Minimum genes a module needs to be tested; smaller modules are only reported.	s4_module_divergence_beta.tsv;s4_uniformity_test.tsv
+scripts/hsf1/15_module_regulatory_profile.R	71	anCWMP	"c(""TIP1"", ""TIR1"", ""TIR2"", ""TIR3"", ""TIR4"", ""DAN1"", ""DAN4"")"	Paralog family collapsed to one representative gene in the paralog check.	s4_paralog_collapse.tsv
+scripts/hsf1/15_module_regulatory_profile.R	72	random seed	set.seed(20260906L)	Fixes the random number stream for the script's resampling and random draws.	s4_module_divergence_beta.tsv;s4_uniformity_test.tsv
+scripts/hsf1/16_s4_stem_collapse.R	44	TP	c(15L, 30L, 60L)	Minutes after the heat shift analysed: 15, 30 and 60.	s4_stem_collapse_ratios.tsv
+scripts/hsf1/16_s4_stem_collapse.R	47	BETAS	c(0, 0.25, 0.5, 0.657, 0.75, 1)	Amplitude exponents at which module divergence ratios are computed.	s4_stem_collapse_ratios.tsv
+scripts/hsf1/16_s4_stem_collapse.R	49	NBOOT	1000L	Number of gene bootstrap resamples for module divergence ratios.	s4_stem_collapse_ratios.tsv
+scripts/hsf1/16_s4_stem_collapse.R	50	NPERM	1000L	Number of module-label permutations in the null.	s4_stem_collapse_ratios.tsv
+scripts/hsf1/16_s4_stem_collapse.R	51	MIN_MOD	20L	Minimum genes a module needs after collapsing families to be tested.	s4_stem_collapse_ratios.tsv
+scripts/hsf1/16_s4_stem_collapse.R	52	anCWMP	"c(""TIP1"", ""TIR1"", ""TIR2"", ""TIR3"", ""TIR4"", ""DAN1"", ""DAN4"")"	Paralog family collapsed to a single gene family before testing.	s4_stem_family_stats.tsv;s4_stem_collapse_ratios.tsv
+scripts/hsf1/16_s4_stem_collapse.R	54	random seed	set.seed(20260906L)	Fixes the random number stream for the script's resampling and random draws.	s4_stem_collapse_ratios.tsv;s4_stem_family_stats.tsv
+scripts/hsf1/17_p2_interaction_se_and_four_conditions.R	55	HEAT	"c(""37_10"", ""37_30"", ""42_10"", ""42_30"")"	Heat conditions analysed: 37 or 42 C for 10 or 30 minutes.	p2_four_condition_interaction.tsv;p2_interaction_model_se.tsv.gz;p2_class_resolution.tsv
+scripts/hsf1/17_p2_interaction_se_and_four_conditions.R	57	OLD_FLOOR	0.1496	Earlier resolution floor of the interaction; class medians below it are flagged.	p2_class_resolution.tsv
+scripts/hsf1/17_p2_interaction_se_and_four_conditions.R	58	random seed	set.seed(20260906L)	Fixes the random number stream for the script's resampling and random draws.	p2_four_condition_interaction.tsv;p2_interaction_model_se.tsv.gz;p2_class_resolution.tsv
+scripts/hsf1/18_p2_amplitude_and_cistrans_identity.R	52	HEAT	"c(""37_10"", ""37_30"", ""42_10"", ""42_30"")"	Heat conditions analysed: 37 or 42 C for 10 or 30 minutes.	p2_interaction_amplitude.tsv
+scripts/hsf1/18_p2_amplitude_and_cistrans_identity.R	53	NSIM	200000L	Number of simulated genes in the cis-trans identity simulation.	a6_cistrans_identity.tsv
+scripts/hsf1/18_p2_amplitude_and_cistrans_identity.R	54	random seed	set.seed(20260906L)	Fixes the random number stream for the script's resampling and random draws.	p2_interaction_amplitude.tsv;a6_cistrans_identity.tsv
+scripts/hsf1/19_figures.R	38	random seed	set.seed(20260906L)	Set at script start; no random draws were found in the figure code.	
+scripts/hsf1/20_p2_offset_origin.R	49	ANCHOR	37_30	Main heat condition (37 C, 30 min) for the gene-level offset table and headline numbers.	p2_offset_origin_summary.tsv;p2_offset_origin_classes.tsv;p2_offset_origin_genewise.tsv.gz
+scripts/hsf1/20_p2_offset_origin.R	49	OTHER	"c(""37_10"", ""42_10"", ""42_30"")"	Other heat conditions summarised alongside the main one.	p2_offset_origin_summary.tsv;p2_offset_origin_classes.tsv
+scripts/hsf1/20_p2_offset_origin.R	50	random seed	set.seed(20260906L)	Fixes the random number stream for the script's resampling and random draws.	p2_offset_origin_summary.tsv;p2_offset_origin_classes.tsv;p2_offset_origin_genewise.tsv.gz
+scripts/hsf1/22_fig_f2d.R	42	CONDS	"c(""25_0"", ""37_10"", ""37_30"", ""42_10"", ""42_30"")"	Conditions (baseline 25 C and four heat conditions) for which library shares are tabulated.	p2_library_share.tsv;F2d_library_share.pdf
+scripts/hsf1/22_fig_f2d.R	43	HEAT	"c(""37_10"", ""37_30"", ""42_10"", ""42_30"")"	Heat conditions compared between library-share non-additivity and interaction offset.	p2_share_vs_offset.tsv
+scripts/hsf1/23_l6_bound_conversion.R	41	TP	c(15L, 30L, 60L)	Minutes after the heat shift analysed: 15, 30 and 60.	b3v2_bound_cis_ratio_vs_c.tsv;b3v2_l6_bound.tsv
+scripts/hsf1/23_l6_bound_conversion.R	42	C_GRID	c(0, 0.02, 0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.6, 0.8)	Grid of injected effect sizes converted to cis divergence ratios.	b3v2_bound_cis_ratio_vs_c.tsv;b3v2_l6_bound.tsv
+scripts/hsf1/23_l6_bound_conversion.R	44	random seed	set.seed(20260906L)	Fixes the random number stream for the script's resampling and random draws.	b3v2_bound_cis_ratio_vs_c.tsv;b3v2_l6_bound.tsv
+scripts/hsf1/24_fig_a2_ladder.R	13	random seed	set.seed(20260906L)	Fixes the simulated genes.	p1_a2_estimator_ladder.tsv;p1_a2_scale_invariance.tsv;FA2_estimator_ladder.pdf
+scripts/hsf1/24_fig_a2_ladder.R	23	N	200000L	Number of simulated genes per simulation.	p1_a2_estimator_ladder.tsv;p1_a2_scale_invariance.tsv;FA2_estimator_ladder.pdf
+scripts/hsf1/24_fig_a2_ladder.R	23	SEC	0.6	Measurement-error SD of the simulated cis estimates.	p1_a2_estimator_ladder.tsv;p1_a2_scale_invariance.tsv;FA2_estimator_ladder.pdf
+scripts/hsf1/24_fig_a2_ladder.R	23	SEP	0.6	Measurement-error SD of the simulated parental estimates.	p1_a2_estimator_ladder.tsv;p1_a2_scale_invariance.tsv;FA2_estimator_ladder.pdf
+scripts/hsf1/25_b4_reference_class_simulation.R	56	random seed	set.seed(20260909L)	Fixes the random number stream for the script's resampling and random draws.	b4_reference_class_simulation.tsv;b4_sweep_summary.tsv;FB4_reference_class_recovery.pdf
+scripts/hsf1/25_b4_reference_class_simulation.R	68	NREP	3L	Number of simulated replicates per genotype.	b4_reference_class_simulation.tsv;b4_sweep_summary.tsv;FB4_reference_class_recovery.pdf
+scripts/hsf1/25_b4_reference_class_simulation.R	68	NGENE	4000L	Number of simulated genes.	b4_reference_class_simulation.tsv;b4_sweep_summary.tsv;FB4_reference_class_recovery.pdf
+scripts/hsf1/25_b4_reference_class_simulation.R	68	LIBSIZE	6e+06	Simulated library size (reads per library).	b4_reference_class_simulation.tsv;b4_sweep_summary.tsv;FB4_reference_class_recovery.pdf
+scripts/hsf1/25_b4_reference_class_simulation.R	68	NDOM	150L	Number of simulated high-expression genes that dominate library composition.	b4_reference_class_simulation.tsv;b4_sweep_summary.tsv;FB4_reference_class_recovery.pdf
+scripts/hsf1/25_b4_reference_class_simulation.R	193	KAPPAS	c(-3, -2.2, -1.4, -0.7, 0, 0.4, 0.8, 1.2, 1.6, 2.2)	Severity values injecting non-additive library share, symmetric in sign.	b4_reference_class_simulation.tsv;b4_sweep_summary.tsv;FB4_reference_class_recovery.pdf
+scripts/hsf1/25_b4_reference_class_simulation.R	194	REAL_SEV	-0.157	Measured share non-additivity in the real data that simulated scenarios are compared with.	b4_reference_class_simulation.tsv;b4_sweep_summary.tsv;FB4_reference_class_recovery.pdf
+scripts/hsf1/26_p2_amplitude_bypair_readback.R	29	HEAT	"c(""37_10"", ""37_30"", ""42_10"", ""42_30"")"	Heat conditions analysed: 37 or 42 C for 10 or 30 minutes.	p2_interaction_amplitude_bypair.tsv;p2_interaction_amplitude_zeropairs.tsv
+scripts/hsf1/27_pincus_external_core_control.R	55	PC	1	Pseudocount added to normalised counts before log2 fold changes.	pincus_external_core_control.tsv;pincus_baseline_shift_diagnostic.tsv
+scripts/hsf1/27_pincus_external_core_control.R	74	REF	not_induced	Gene class used as the reference for comparing Hsf1 dependence.	pincus_external_core_control.tsv;pincus_baseline_shift_diagnostic.tsv
+scripts/hsf1/27_pincus_external_core_control.R	82	random seed	set.seed(11)	Fixes the bootstrap resamples for confidence intervals of class medians.	pincus_external_core_control.tsv
+scripts/hsf1/28_cold_arm_specificity.R	62	PRIOR	2	Pseudocount (prior count) added before log-CPM, damping fold changes of low-count genes.	s4_module_divergence_beta_cold.tsv;s4_module_heat_vs_cold_beta0.tsv
+scripts/hsf1/28_cold_arm_specificity.R	62	MINCPM	1	Minimum counts per million in four libraries of each species for a gene to be kept.	s4_module_divergence_beta_cold.tsv;s4_module_heat_vs_cold_beta0.tsv
+scripts/hsf1/28_cold_arm_specificity.R	174	NBOOT	2000L	Number of gene bootstrap resamples for module ratios in the cold-shock data.	s4_module_divergence_beta_cold.tsv
+scripts/hsf1/28_cold_arm_specificity.R	182	random seed	set.seed(28)	Fixes the gene bootstrap resamples.	s4_module_divergence_beta_cold.tsv
+scripts/hsf1/30_amplitude_matched_module_test.R	67	TOL_FRAC	0.1	A control gene must be within 10% of its target's amplitude; unmatched genes are dropped.	s4_metabolism_amplitude_matched.tsv;s4_metabolism_matched_pairs.tsv
+scripts/hsf1/30_amplitude_matched_module_test.R	68	NBOOT	2000L	Number of bootstrap resamples over matched gene pairs.	s4_metabolism_amplitude_matched.tsv
+scripts/hsf1/30_amplitude_matched_module_test.R	95	random seed	set.seed(30)	Fixes the matched-pair bootstrap resamples.	s4_metabolism_amplitude_matched.tsv
+scripts/hsf1/31_p1_design_grid.R	42	N_GENE	2000L	Number of simulated genes per dataset.	p1_design_grid.tsv
+scripts/hsf1/31_p1_design_grid.R	43	NSIM	200L	Number of simulated datasets per design-grid cell.	p1_design_grid.tsv
+scripts/hsf1/31_p1_design_grid.R	46	random seed	set.seed(seed)	Fixes each simulated dataset; the seed is derived from grid cell and replicate.	p1_design_grid.tsv
+scripts/hsf1/33_core_definition_robustness.R	111	NBOOT	2000L	Number of gene bootstrap resamples for ratios under each core definition.	s4_core_definition_robustness.tsv
+scripts/hsf1/33_core_definition_robustness.R	145	random seed	set.seed(33)	Fixes the gene bootstrap resamples.	s4_core_definition_robustness.tsv
+scripts/hsf1/34_core_definition_strict.R	61	random seed	set.seed(4)	Fixes the bootstrap that reproduces the earlier core result as a check.	a5_core_definition_strict.tsv
+scripts/hsf1/34_core_definition_strict.R	97	PROTEO	"c(""GO:0006457"", ""GO:0051082"", ""GO:0031072"", ""GO:0034620"")"	GO terms (protein folding, chaperones) defining the proteostasis gene set used as one core definition.	a5_core_definition_strict.tsv
+scripts/hsf1/34_core_definition_strict.R	121	random seed	set.seed(34)	Fixes the bootstrap resamples for each alternative core definition.	a5_core_definition_strict.tsv
+scripts/hsf1/35_p1_replicate_axis.R	35	random seed	set.seed(seed)	Fixes each simulated dataset of the replicate-number sweep.	p1_replicate_axis.tsv
+scripts/hsf1/38_fig_p1_theory_and_reliability.R	66	GAM	c(1, 1.1, 1.3, 1.6)	True gain values drawn as reference lines in the analytical figure.	FP1_1_analytical_result.pdf;FP1_1_analytical_result.png
+scripts/hsf1/38_fig_p1_theory_and_reliability.R	159	GS	c(1.1, 1.2, 1.3, 1.5, 2)	True gain values whose thresholds (1/gain) are compared with measured reliabilities.	FP1_3_measured_reliability.pdf;FP1_3_measured_reliability.png
+scripts/hsf1/43_fig_p1_robustness.R	35	GAMMA	1.3	True gain used in the robustness simulations.	p1_robustness_grid.tsv;p1_robustness_rho_sweep.tsv;FS2_robustness.pdf
+scripts/hsf1/43_fig_p1_robustness.R	35	HTRUE	0.75	True reliability of the reference measurement in the simulations.	p1_robustness_grid.tsv;p1_robustness_rho_sweep.tsv;FS2_robustness.pdf
+scripts/hsf1/43_fig_p1_robustness.R	35	NGENE	3000L	Number of simulated genes per simulation.	p1_robustness_grid.tsv;p1_robustness_rho_sweep.tsv;FS2_robustness.pdf
+scripts/hsf1/43_fig_p1_robustness.R	35	NSIM	400L	Number of simulations per scenario.	p1_robustness_grid.tsv;p1_robustness_rho_sweep.tsv;FS2_robustness.pdf
+scripts/hsf1/43_fig_p1_robustness.R	35	SEED	20260912L	Seed value for the robustness simulations.	p1_robustness_grid.tsv;p1_robustness_rho_sweep.tsv;FS2_robustness.pdf
+scripts/hsf1/43_fig_p1_robustness.R	36	vR	1	Variance of the simulated true signal.	p1_robustness_grid.tsv;p1_robustness_rho_sweep.tsv;FS2_robustness.pdf
+scripts/hsf1/43_fig_p1_robustness.R	79	random seed	set.seed(SEED)	Fixes the scenario simulations.	p1_robustness_grid.tsv;FS2_robustness.pdf
+scripts/hsf1/43_fig_p1_robustness.R	112	RHO	c(0, 0.025, 0.05, 0.075, 0.1, 0.15, 0.2, 0.3, 0.4)	Error correlations swept to test how much of the correction survives.	p1_robustness_rho_sweep.tsv;FS2_robustness.pdf
+scripts/hsf1/43_fig_p1_robustness.R	113	random seed	set.seed(SEED + 1L)	Fixes the error-correlation sweep simulations.	p1_robustness_rho_sweep.tsv;FS2_robustness.pdf
+scripts/hsf1/44_p3_module_stratum_crosstab.R	35	TP	c(15L, 30L, 60L)	Minutes after the heat shift analysed: 15, 30 and 60.	s4_module_stratum_split_beta.tsv;s4_module_stratum_split3_beta.tsv;s4_module_stratum_split_outcome.tsv
+scripts/hsf1/44_p3_module_stratum_crosstab.R	38	BETAS	c(0, 0.25, 0.383444, 0.5, 0.657, 0.75, 1)	Amplitude exponents at which divergence ratios are computed.	s4_module_stratum_split_beta.tsv;s4_module_stratum_split3_beta.tsv;s4_module_stratum_split_outcome.tsv
+scripts/hsf1/44_p3_module_stratum_crosstab.R	39	NBOOT	1000L	Number of gene bootstrap resamples for divergence ratios.	s4_module_stratum_split_beta.tsv;s4_module_stratum_split3_beta.tsv
+scripts/hsf1/44_p3_module_stratum_crosstab.R	40	SEED	20260912L	Seed value for the gene bootstrap.	s4_module_stratum_split_beta.tsv;s4_module_stratum_split3_beta.tsv
+scripts/hsf1/44_p3_module_stratum_crosstab.R	151	random seed	set.seed(SEED)	Fixes the bootstrap for the two-way split of modules by regulator group.	s4_module_stratum_split_beta.tsv
+scripts/hsf1/44_p3_module_stratum_crosstab.R	251	random seed	set.seed(SEED + 2L)	Fixes the bootstrap for the three-way split of metabolism genes.	s4_module_stratum_split3_beta.tsv
+scripts/hsf1/45_core_definition_at_headline_beta.R	34	BETAS_REPORT	c(0, 0.383444, 1)	Amplitude exponents reported, including the fitted value 0.383444.	a5_core_definition_by_beta.tsv
+scripts/hsf1/45_core_definition_at_headline_beta.R	35	NB	2000L	Number of gene bootstrap resamples for ratios.	a5_core_definition_by_beta.tsv
+scripts/hsf1/45_core_definition_at_headline_beta.R	79	random seed	set.seed(seed)	Fixes the bootstrap for each core definition and exponent.	a5_core_definition_by_beta.tsv
+scripts/hsf1/45_core_definition_at_headline_beta.R	94	PROTEO	"c(""GO:0006457"", ""GO:0051082"", ""GO:0031072"", ""GO:0034620"")"	GO terms (protein folding, chaperones) defining the proteostasis gene set used as one core definition.	a5_core_definition_by_beta.tsv
+scripts/hsf1/46_p2_sequence_orthogonal_validation.R	37	STRE	CCCCT	Stress response element motif (Msn2/4 binding site) counted in promoters.	p2x_class_sequence_curation.tsv;p2x_redundant_sublabel_sequence.tsv
+scripts/hsf1/46_p2_sequence_orthogonal_validation.R	166	random seed	set.seed(SEED)	Fixes random draws for a built-in check that is printed to the log, not written to a table.	
+scripts/hsf1/47_cold_arm_regulon_split.R	29	ANCHOR	0.657	Amplitude exponent highlighted in the read-out and added to the exponent grid.	s4_cold_regulon_split_beta.tsv
+scripts/hsf1/47_cold_arm_regulon_split.R	31	NBOOT	1000L	Number of gene bootstrap resamples for divergence ratios.	s4_cold_regulon_split_beta.tsv
+scripts/hsf1/47_cold_arm_regulon_split.R	32	SEED	20260912L	Seed value for the gene bootstrap.	s4_cold_regulon_split_beta.tsv
+scripts/hsf1/47_cold_arm_regulon_split.R	103	random seed	set.seed(SEED)	Fixes the gene bootstrap resamples.	s4_cold_regulon_split_beta.tsv
+scripts/hsf1/49_p2x_full_scan.R	34	STRE	CCCCT	Stress response element motif (Msn2/4 binding site) counted in promoters.	p2x_full_scan_per_gene.tsv;p2x_full_class_sequence_curation.tsv
+scripts/hsf1/49_p2x_full_scan.R	57	STRAIN	DBVPG6765	Strain whose genome and annotation supply the promoters scanned.	p2x_full_scan_per_gene.tsv;p2x_full_class_sequence_curation.tsv
+scripts/hsf1/52_c5_decomposition.R	32	MINCPM	1	Minimum counts per million a gene must reach in enough libraries to be kept.	ext_hov2020_cis_trans_by_stratum.tsv;ext_hov2020_heat_vs_cold_share.tsv;ext_hov2020_jackknife.tsv
+scripts/hsf1/52_c5_decomposition.R	32	MINLIB	4L	Minimum number of libraries in both hybrid and parent data that must pass the counts-per-million cut-off.	ext_hov2020_cis_trans_by_stratum.tsv;ext_hov2020_heat_vs_cold_share.tsv;ext_hov2020_jackknife.tsv
+scripts/hsf1/52_c5_decomposition.R	32	PRIOR	2	Pseudocount added to counts per million before log2.	ext_hov2020_cis_trans_by_stratum.tsv;ext_hov2020_heat_vs_cold_share.tsv;ext_hov2020_jackknife.tsv
+scripts/hsf1/52_c5_decomposition.R	32	NBOOT	1000L	Number of gene bootstrap resamples for cis and trans estimates.	ext_hov2020_cis_trans_by_stratum.tsv;ext_hov2020_heat_vs_cold_share.tsv;ext_hov2020_jackknife.tsv
+scripts/hsf1/52_c5_decomposition.R	32	SEED	20260912L	Seed value for the bootstrap and pairing draws.	ext_hov2020_cis_trans_by_stratum.tsv;ext_hov2020_heat_vs_cold_share.tsv;ext_hov2020_jackknife.tsv
+scripts/hsf1/52_c5_decomposition.R	36	random seed	set.seed(1L)	Fixes the simulation of a built-in algebra check; no table depends on it.	
+scripts/hsf1/52_c5_decomposition.R	167	random seed	set.seed(SEED)	Fixes the bootstrap of the genome-wide cold-response decomposition.	ext_hov2020_heat_vs_cold_share.tsv
+scripts/hsf1/52_c5_decomposition.R	197	random seed	set.seed(SEED)	Fixes the bootstrap of the decomposition by gene group.	ext_hov2020_cis_trans_by_stratum.tsv
+scripts/hsf1/52_c5_decomposition.R	258	random seed	set.seed(SEED + 7L)	Fixes the random replicate pairings in the pairing sensitivity check.	ext_hov2020_pairing_sensitivity.tsv
+scripts/hsf1/55_p1_fourth_dataset_kk2024.R	36	NBOOT	2000L	Number of gene bootstrap resamples for the gain estimates.	p1x_kk2024_known_truth_gain.tsv
+scripts/hsf1/55_p1_fourth_dataset_kk2024.R	36	PRIOR	2	Pseudocount added to counts per million before log2.	p1x_kk2024_known_truth_gain.tsv
+scripts/hsf1/55_p1_fourth_dataset_kk2024.R	36	MINCPM	1	Minimum counts per million a gene must reach in every library to be kept.	p1x_kk2024_known_truth_gain.tsv
+scripts/hsf1/55_p1_fourth_dataset_kk2024.R	89	random seed	set.seed(20260913L)	Fixes the gene bootstrap resamples.	p1x_kk2024_known_truth_gain.tsv
+scripts/hsf1/56_residual_polarity.R	37	ALPHA	0.05	Adjusted p-value cut-off for calling a gene a heat responder.	residual_polarity_by_set.tsv;residual_polarity_by_species.tsv
+scripts/hsf1/56_residual_polarity.R	37	SEED	20260913L	Seed value for the random draws in the polarity tests.	residual_polarity_by_set.tsv;residual_polarity_by_species.tsv
+scripts/hsf1/56_residual_polarity.R	119	random seed	set.seed(SEED)	Fixes the random number stream for the script's resampling and random draws.	residual_polarity_by_set.tsv;residual_polarity_by_species.tsv
+scripts/hsf1/57_skud_ortholog_map.R	28	MIN_ID	70	Minimum percent protein identity for an S. kudriavzevii to S. cerevisiae ortholog match.	skdz_to_scer_map.tsv
+scripts/hsf1/57_skud_ortholog_map.R	28	MIN_COV	50	Minimum percent alignment coverage for an ortholog match.	skdz_to_scer_map.tsv
+scripts/hsf1/58_species_matched_shock.R	38	MINCPM	1	Minimum counts per million in at least two libraries per species for a gene to be kept.	species_matched_module_ratio.tsv
+scripts/hsf1/58_species_matched_shock.R	38	PRIOR	2	Pseudocount added to counts per million before log2.	species_matched_module_ratio.tsv
+scripts/hsf1/58_species_matched_shock.R	38	NBOOT	2000L	Number of gene bootstrap resamples for module ratios.	species_matched_module_ratio.tsv
+scripts/hsf1/58_species_matched_shock.R	38	SEED	20260913L	Seed value for the gene bootstrap.	species_matched_module_ratio.tsv
+scripts/hsf1/58_species_matched_shock.R	42	BETAS	c(0, 0.25, 0.5, 0.75, 1)	Amplitude exponents at which module ratios are computed.	species_matched_module_ratio.tsv
+scripts/hsf1/58_species_matched_shock.R	127	random seed	set.seed(SEED)	Fixes the gene bootstrap resamples.	species_matched_module_ratio.tsv
+scripts/hsf1/60_p2_fig3_two_backgrounds.R	22	ALPHA	0.05	Adjusted p-value cut-off for a GO term to be shown and to survive paralog collapsing.	p2_fig3_two_backgrounds.tsv;F3_go_collapse.pdf
+scripts/hsf1/60_p2_fig3_two_backgrounds.R	25	SETS	"c(universe = ""core_vs_universe"", induced = ""core_vs_other_induced"")"	The two enrichment backgrounds compared: whole genome and other heat-induced genes.	p2_fig3_two_backgrounds.tsv;F3_go_collapse.pdf
+scripts/hsf1/60_p2_fig3_two_backgrounds.R	26	COLL	"c(universe = ""core_vs_universe_paralog_collapsed"", induced = ""core_vs_other_induced_paralog_collapsed"")"	Paralog-collapsed versions of the two enrichment backgrounds.	p2_fig3_two_backgrounds.tsv;F3_go_collapse.pdf
+scripts/hsf1/64_b5_centred_reliability_with_ci.R	20	SEED	20260915L	Seed value for the bootstrap; each gene group adds its own offset.	p1x_b5_reliability_centred_ci.tsv;p1x_b5_sensitivity_remainder.tsv
+scripts/hsf1/64_b5_centred_reliability_with_ci.R	21	B	2000L	Number of bootstrap resamples for reliability confidence intervals.	p1x_b5_reliability_centred_ci.tsv;p1x_b5_sensitivity_remainder.tsv
+scripts/hsf1/64_b5_centred_reliability_with_ci.R	28	random seed	set.seed(seed)	Fixes the bootstrap resamples of each reliability interval.	p1x_b5_reliability_centred_ci.tsv;p1x_b5_sensitivity_remainder.tsv
+scripts/hsf1/64_b5_centred_reliability_with_ci.R	50	ELIGIBLE	"c(""Hsf1_core"", ""Hsf1_joint"", ""Msn24_only"", ""TF_independent"", ""not_induced"", ""other_induced"")"	Gene groups eligible for the reliability estimates; other groups are excluded.	p1x_b5_reliability_centred_ci.tsv;p1x_b5_sensitivity_remainder.tsv
+scripts/hsf1/72_p2_i25.R	91	HEAT	"c(""37_10"", ""37_30"", ""42_10"", ""42_30"")"	Heat conditions analysed: 37 or 42 C for 10 or 30 minutes.	p2_i25_amplitude.tsv
+scripts/hsf1/75_p1_iv_coverage.R	20	NBOOT	200L	Number of bootstrap resamples per simulated dataset for the interval estimate.	p1_iv_coverage.tsv
+scripts/hsf1/75_p1_iv_coverage.R	23	random seed	set.seed(seed)	Fixes each simulated dataset, matching the design-grid simulations.	p1_iv_coverage.tsv
+scripts/hsf1/76_p2_i25_resolvability.R	31	SG	c(1, -1, -1, 1)	Contrast weights for double mutant, Hsf1-depleted, msn2/4-deleted, wild type: the genetic interaction.	p2_i25_resolvability.tsv;p2_i25_resolvability_bypair.tsv;p2_i25_relabel.tsv
+scripts/hsf1/76_p2_i25_resolvability.R	36	HEAT	"c(""37_10"", ""37_30"", ""42_10"", ""42_30"")"	Heat conditions analysed: 37 or 42 C for 10 or 30 minutes.	p2_i25_resolvability.tsv;p2_i25_resolvability_bypair.tsv;p2_i25_relabel.tsv
+scripts/hsf1/77_p2_sensitivity.R	11	ANCHOR	37_30	Heat condition (37 C, 30 min) at which genes are classified by regulator dependence.	p2_alpha_class_sizes.tsv;p2_alpha_redundant_partition.tsv;p2_basal_hsf1_dependence.tsv
+scripts/hsf1/77_p2_sensitivity.R	13	ALPHA_SET	c(0.01, 0.05, 0.1)	Adjusted p-value cut-offs at which gene classes are recomputed.	p2_alpha_class_sizes.tsv;p2_alpha_redundant_partition.tsv
+scripts/hsf1/78_p2_detectability.R	23	NB	2000L	Number of gene bootstrap resamples for the interaction amplitude.	p2_detectability_presence.tsv;p2_detectability_ratio.tsv;p2_detectability_bypairing.tsv
+scripts/hsf1/78_p2_detectability.R	23	random seed	set.seed(20260926L)	Fixes the random number stream for the script's resampling and random draws.	p2_detectability_presence.tsv;p2_detectability_ratio.tsv;p2_detectability_bypairing.tsv
+scripts/hsf1/78_p2_detectability.R	33	SG	c(1, -1, -1, 1)	Contrast weights for double mutant, Hsf1-depleted, msn2/4-deleted, wild type: the genetic interaction.	p2_detectability_presence.tsv;p2_detectability_ratio.tsv;p2_detectability_bypairing.tsv
+scripts/hsf1/78_p2_detectability.R	36	HEAT	"c(""37_10"", ""37_30"", ""42_10"", ""42_30"")"	Heat conditions analysed: 37 or 42 C for 10 or 30 minutes.	p2_detectability_presence.tsv;p2_detectability_ratio.tsv;p2_detectability_bypairing.tsv
+scripts/hsf1/78_p2_detectability.R	85	random seed	set.seed(1)	Fixes which 2000 genes are subsampled to estimate inter-gene correlation.	p2_intergene_correlation.tsv
+scripts/hsf1/79_p2_replicate_jackknife.R	19	SG	c(1, -1, -1, 1)	Contrast weights for double mutant, Hsf1-depleted, msn2/4-deleted, wild type: the genetic interaction.	p2_replicate_jackknife.tsv
+scripts/hsf1/80_p2_adjusted_uncertainty.R	25	SG	c(1, -1, -1, 1)	Contrast weights for double mutant, Hsf1-depleted, msn2/4-deleted, wild type: the genetic interaction.	p2_class_adjusted.tsv;p2_presence_adjusted.tsv;p2_ratio_adjusted.tsv
+scripts/hsf1/80_p2_adjusted_uncertainty.R	40	random seed	set.seed(1)	Fixes which 2000 genes are subsampled to estimate inter-gene correlation.	p2_class_adjusted.tsv;p2_presence_adjusted.tsv;p2_ratio_adjusted.tsv
+scripts/hsf1/82_p1_h_correlation.R	28	random seed	set.seed(20260926L)	Fixes the random number stream for the script's resampling and random draws.	p1_intergene_correlation.tsv;p1_h_adjusted.tsv
+scripts/hsf1/82_p1_h_correlation.R	64	G	c(1.1, 1.2, 1.3, 1.5, 2)	True gain values whose thresholds (1/gain) are compared with reliabilities.	p1_reversal_counts_adjusted.tsv
+scripts/hsf1/83_p1_iv_coverage_correlated.R	19	NBOOT	200L	Number of bootstrap resamples per simulated dataset for the interval estimate.	p1_iv_coverage_rho017.tsv;p1_iv_coverage_rho050.tsv
+scripts/hsf1/83_p1_iv_coverage_correlated.R	23	random seed	set.seed(seed)	Fixes each simulated dataset with correlated errors.	p1_iv_coverage_rho017.tsv;p1_iv_coverage_rho050.tsv
+scripts/hsf1/83_p1_iv_coverage_correlated.R	32	random seed	set.seed(1)	Fixes random draws for a built-in check that is printed to the log, not written to a table.	
+scripts/hsf1/84_p2_rho2_sensitivity.R	19	random seed	set.seed(20260926L)	Fixes the random gene pairs used to estimate inter-gene correlation.	p2_presence_rho2_sensitivity.tsv;p2_ratio_rho2_sensitivity.tsv
+scripts/hsf1/85_p3_parental_axis_tests.R	40	BETA_FAM	c(0, 0.25, 0.5, 0.657, 0.75, 1)	Amplitude exponents in the family of module tests.	p3_parental_axis_family.tsv
+scripts/hsf1/85_p3_parental_axis_tests.R	49	random seed	set.seed(341)	Fixes gene subsampling for the inter-gene correlation estimates.	p3_parental_axis_family.tsv;p3_parental_axis_cold.tsv
+scripts/hsf1/85_p3_parental_axis_tests.R	64	NB	1000L	Number of gene bootstrap resamples per gene set.	p3_parental_axis_family.tsv;p3_parental_axis_cold.tsv
+scripts/hsf1/85_p3_parental_axis_tests.R	72	random seed	set.seed(seed)	Fixes the gene bootstrap of each set comparison.	p3_parental_axis_family.tsv;p3_parental_axis_cold.tsv
+scripts/hsf1/85_p3_parental_axis_tests.R	103	random seed	set.seed(657 + t)	Fixes the module-label permutations at each timepoint.	p3_parental_axis_A2_permutation_0657.tsv
+scripts/hsf1/85_p3_parental_axis_tests.R	114	TOL	0.1	A control gene must be within 10% of its target's amplitude to be matched.	p3_parental_axis_A1_matched.tsv;p3_parental_axis_A1_pairs.tsv
+scripts/hsf1/85_p3_parental_axis_tests.R	122	random seed	set.seed(30)	Fixes the matched-pair bootstrap resamples.	p3_parental_axis_A1_matched.tsv
+scripts/hsf1/85_p3_parental_axis_tests.R	141	ROOT	GO:0005975	GO term (carbohydrate metabolism) whose child terms are left out one at a time.	p3_parental_axis_A4.tsv;p3_parental_axis_A4_kegg_overlap.tsv
+scripts/hsf1/86_p3_parental_axis_scope.R	14	NB	500L	Number of bootstrap resamples per core definition.	p3_parental_axis_core_definitions.tsv
+scripts/hsf1/86_p3_parental_axis_scope.R	49	random seed	set.seed(86 + t)	Fixes the bootstrap resamples at each timepoint.	p3_parental_axis_core_definitions.tsv
+scripts/hsf1/87_allele_rho.R	26	random seed	set.seed(871)	Fixes gene subsampling and gene pairs for inter-gene correlation of allele differences.	p3_adjusted_core.tsv;p3_adjusted_cisshare.tsv
+scripts/hsf1/87a_p3_core_adjusted.R	22	NB	1000L	Number of bootstrap resamples of each gene set.	p3_adjusted_core.tsv
+scripts/hsf1/87a_p3_core_adjusted.R	27	random seed	set.seed(seed)	Fixes the bootstrap resamples.	p3_adjusted_core.tsv
+scripts/hsf1/87b_p3_cisshare_adjusted.R	14	NB	1000L	Number of gene bootstrap resamples for the cis share.	p3_adjusted_cisshare.tsv
+scripts/hsf1/87b_p3_cisshare_adjusted.R	18	random seed	set.seed(87)	Fixes the gene bootstrap resamples.	p3_adjusted_cisshare.tsv
+scripts/hsf1/87c_p3_composition_adjusted.R	14	NB	1000L	Number of gene bootstrap resamples for the composition ratio.	p3_adjusted_composition.tsv
+scripts/hsf1/87c_p3_composition_adjusted.R	21	random seed	set.seed(873)	Fixes the random gene pairs used to estimate inter-gene correlation.	p3_adjusted_composition.tsv
+scripts/hsf1/87c_p3_composition_adjusted.R	28	random seed	set.seed(20260905 + t)	Fixes the gene bootstrap resamples at each timepoint.	p3_adjusted_composition.tsv
+scripts/hsf1/89_p1_seqc_known_truth.R	82	random seed	set.seed(1L)	Fixes the bootstrap of the gap between measured and expected gain.	p1_seqc_bgi_levels.tsv;p1_seqc_may_levels.tsv;p1_seqc_bgi_verdicts.tsv
+scripts/hsf1/89_p1_seqc_known_truth.R	99	random seed	set.seed(20260927 + lev)	Fixes the binomial read thinning at each depth level.	p1_seqc_bgi_levels.tsv;p1_seqc_may_levels.tsv;p1_seqc_bgi_verdicts.tsv
+scripts/hsf1/91_p1_reference_arm_reliability.R	21	ANCHOR	37_30	Heat condition (37 C, 30 min) whose gene response classes define the gene groups compared.	p1_reference_arm_reliability.tsv
+scripts/hsf1/91_p1_reference_arm_reliability.R	23	TP	c(15L, 30L, 60L)	Minutes after the heat shift analysed: 15, 30 and 60.	p1_reference_arm_reliability.tsv
+scripts/hsf1/91_p1_reference_arm_reliability.R	24	PRIOR	2	Pseudocount (prior count) added before log-CPM, damping fold changes of low-count genes.	p1_reference_arm_reliability.tsv
+scripts/hsf1/91_p1_reference_arm_reliability.R	25	MINCPM	1	Minimum counts per million in four libraries of each allele for a gene to be kept.	p1_reference_arm_reliability.tsv
+scripts/hsf1/92_p1_iv_selection_readings.R	14	ALPHA	0.05	Adjusted p-value cut-off for selecting genes in the filtered gene selections.	p1_iv_selection_readings.tsv
+scripts/hsf1/92_p1_iv_selection_readings.R	15	partner	"c(ScxSp = ""SkxSu"", SkxSu = ""ScxSp"", ScxSu = ""SpxSk"", SpxSk = ""ScxSu"", ScxSk = ""SpxSu"", SpxSu = ""ScxSk"")"	For each hybrid, its co-pooled partner is excluded with it from the instrument built from other hybrids.	p1_iv_selection_readings.tsv
+scripts/hsf1/92_p1_iv_selection_readings.R	17	random seed	set.seed(20260905)	Fixes the random number stream for the script's resampling and random draws.	p1_iv_selection_readings.tsv
+scripts/hsf1/92_p1_iv_selection_readings.R	31	readings	"c(""current"", ""no_filter"", ""instrument"")"	Gene selections compared: current filter, no filter, and filter on the instrument.	p1_iv_selection_readings.tsv
+scripts/hsf1/93_p1_reference_arm_reliability_ci.R	12	ANCHOR	37_30	Heat condition (37 C, 30 min) whose gene response classes define the gene groups compared.	p1_reference_arm_h_adjusted.tsv
+scripts/hsf1/93_p1_reference_arm_reliability_ci.R	12	TP	c(15L, 30L, 60L)	Minutes after the heat shift analysed: 15, 30 and 60.	p1_reference_arm_h_adjusted.tsv
+scripts/hsf1/93_p1_reference_arm_reliability_ci.R	13	PRIOR	2	Pseudocount (prior count) added before log-CPM, damping fold changes of low-count genes.	p1_reference_arm_h_adjusted.tsv
+scripts/hsf1/93_p1_reference_arm_reliability_ci.R	13	MINCPM	1	Minimum counts per million in four libraries of each allele for a gene to be kept.	p1_reference_arm_h_adjusted.tsv
+scripts/hsf1/93_p1_reference_arm_reliability_ci.R	13	NB	400	Number of gene bootstrap resamples for reliability intervals.	p1_reference_arm_h_adjusted.tsv
+scripts/hsf1/93_p1_reference_arm_reliability_ci.R	13	random seed	set.seed(20260928)	Fixes the random number stream for the script's resampling and random draws.	p1_reference_arm_h_adjusted.tsv
+scripts/hsf1/94_p1_anchor_diagnosis.R	15	ALPHA	0.05	Adjusted p-value cut-off for selecting genes in the filtered reading.	p1_anchor_diagnosis.tsv
+scripts/hsf1/94_p1_anchor_diagnosis.R	15	PRIOR	2	Pseudocount (prior count) added before log-CPM, damping fold changes of low-count genes.	p1_anchor_diagnosis.tsv
+scripts/hsf1/95_p2_shutoff_timecourse.R	9	conds	"c(""37_10"", ""37_30"", ""42_10"", ""42_30"")"	Heat conditions analysed: 37 or 42 C for 10 or 30 minutes.	p2_shutoff_timecourse.tsv
+scripts/hsf1/96_p2_time_contrasts.R	48	random seed	set.seed(1)	Fixes which 2000 genes are subsampled to estimate inter-gene correlation.	p2_time_class_medians.tsv
+scripts/pipeline/03_comparisons_registry.R	11	conds	"c(""25_0"", ""37_10"", ""37_30"", ""42_10"", ""42_30"")"	Conditions at which genotypes are compared: baseline 25 C and four heat conditions.	comparisons.csv
+scripts/pipeline/20_batch_run.R	40	PREFILTER_X	3	Minimum samples with at least 10 reads for a gene to enter testing.	batch_summary.tsv;Wildtype_37_30_vs_25_0.tsv;HSF1.KD_vs_Wildtype_at_37_30.tsv
+scripts/pipeline/20_batch_run.R	41	ALPHA	0.05	Adjusted p-value cut-off for calling genes up or down.	batch_summary.tsv;Wildtype_37_30_vs_25_0.tsv;HSF1.KD_vs_Wildtype_at_37_30.tsv
+scripts/pipeline/20_batch_run.R	42	SEED	20260905	Seed value passed to set.seed at the start of the run.	batch_summary.tsv;Wildtype_37_30_vs_25_0.tsv;HSF1.KD_vs_Wildtype_at_37_30.tsv
+scripts/pipeline/20_batch_run.R	47	random seed	set.seed(SEED)	Fixes the random number stream for the script's resampling and random draws.	batch_summary.tsv;Wildtype_37_30_vs_25_0.tsv;HSF1.KD_vs_Wildtype_at_37_30.tsv
+scripts/pipeline/20_batch_run.R	70	methods_used	"c(""DESeq2"", ""edgeR"", ""limma"")"	Differential expression methods run on every comparison.	batch_summary.tsv;Wildtype_37_30_vs_25_0.tsv;HSF1.KD_vs_Wildtype_at_37_30.tsv

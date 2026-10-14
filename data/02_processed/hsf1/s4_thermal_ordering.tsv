@@ -1,0 +1,4 @@
+time	ordering	thermal	thermo_first_two	cryo_first_two
+15	Su > Sc > Sp > Sk	cryophilic > thermophilic > thermophilic > cryophilic	FALSE	FALSE
+30	Su > Sk > Sc > Sp	cryophilic > cryophilic > thermophilic > thermophilic	FALSE	TRUE
+60	Sk > Su > Sp > Sc	cryophilic > cryophilic > thermophilic > thermophilic	FALSE	TRUE

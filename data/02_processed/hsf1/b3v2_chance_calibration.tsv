@@ -1,0 +1,9 @@
+background	metric	random	observed	ratio	admissible_primary
+measured (A .323 C .182 G .175 T .320)	median n_units	16	19	1.1875	FALSE
+measured (A .323 C .182 G .175 T .320)	carries >=1 classic HSE	0.004	0.0149684302198998	3.74210755497496	TRUE
+measured (A .323 C .182 G .175 T .320)	carries >=1 gapped HSE	0.00533333333333333	0.0244393642499456	4.58238079686479	TRUE
+measured (A .323 C .182 G .175 T .320)	carries >=1 classic OR gapped	0.00866666666666667	0.0372849989113869	4.30211525900618	TRUE
+assumed reference (A/T .31, C/G .19)	median n_units	15	19	1.26666666666667	FALSE
+assumed reference (A/T .31, C/G .19)	carries >=1 classic HSE	0.004	0.0149684302198998	3.74210755497496	TRUE
+assumed reference (A/T .31, C/G .19)	carries >=1 gapped HSE	0.004	0.0244393642499456	6.10984106248639	TRUE
+assumed reference (A/T .31, C/G .19)	carries >=1 classic OR gapped	0.008	0.0372849989113869	4.66062486392336	TRUE

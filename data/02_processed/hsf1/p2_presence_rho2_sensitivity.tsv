@@ -1,0 +1,10 @@
+scale	condition	zero_pairings	present_rho	present_rho2	min_lo_rho	min_lo_rho2
+level	25_0	0	FALSE	FALSE	0	0
+level	37_10	0	FALSE	FALSE	0	0
+level	37_30	0	TRUE	FALSE	0.708470643546585	0
+level	42_10	2	FALSE	FALSE	0	0
+level	42_30	1	FALSE	FALSE	0	0
+response	37_10	0	TRUE	FALSE	0.271134723952498	0
+response	37_30	2	FALSE	FALSE	0	0
+response	42_10	9	FALSE	FALSE	0	0
+response	42_30	4	FALSE	FALSE	0	0

@@ -1,0 +1,7 @@
+stratum	n_falls	n_hyb	n_trans_gt_cis_60
+Hsf1_core	6	6	6
+Hsf1_joint	6	6	5
+Msn24_only	6	6	6
+TF_independent	6	6	6
+not_induced	6	6	6
+other_induced	6	6	6
