@@ -1,6 +1,7 @@
 {
   "title": "Analysis record for three manuscripts on the yeast heat-shock response (sharedstat analysis)",
   "upload_type": "software",
+  "version": "1.0.1",
   "description": "Analysis and figure scripts, derived tables, parameters, figures, environment record and reproduction record behind three manuscripts by Rui Chen: (P1) Shared-component error can reverse comparative gains in hybrid allele-specific expression: reliability diagnostics and correction; (P2) Msn2/4-dependent expression is sustained at 37 °C after Hsf1 anchor-away with rapamycin: a four-genotype reanalysis of the Saccharomyces cerevisiae heat-shock response; (P3) Allele-linked divergence falls while the parental remainder rises during heat shock in six Saccharomyces hybrids. Code is MIT-licensed; the author's contribution to the derived tables is CC0 1.0, and tables derived from public datasets remain subject to the terms of those sources. Requires sharedstat 0.1.3 (doi:10.5281/zenodo.23070215).",
   "creators": [
     {

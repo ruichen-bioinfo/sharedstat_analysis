@@ -19,14 +19,14 @@ outd <- file.path(root, "data/02_processed/crossspecies")
 say <- function(...) cat(sprintf(...), "\n", sep = "")
 HYB <- c("ScxSk","ScxSp","ScxSu","SkxSu","SpxSk","SpxSu"); METHODS <- c("DESeq2","edgeR","limma"); ALPHA <- 0.05
 partner <- c(ScxSp = "SkxSu", SkxSu = "ScxSp", ScxSu = "SpxSk", SpxSk = "ScxSu", ScxSk = "SpxSu", SpxSu = "ScxSk")
-X <- fread(cmd = paste("zcat", shQuote(file.path(outd, "fay_multimethod.tsv.gz"))))[condition == "heat" & group %in% HYB]
+X <- fread(cmd = paste("zcat", shQuote(file.path(outd, "fay_multimethod_p1order.tsv.gz"))))[condition == "heat" & group %in% HYB]   # SpxSk refitted with the first-named allele as reference
 Rtab <- X[model == "A" & term == "time", .(gene, group, method, R = eff, padj_t = padj)]
 instrument <- function(g, mt) {
   keep <- setdiff(HYB, c(g, partner[[g]]))
   s <- Rtab[group %in% keep & method == mt, .(S = mean(R, na.rm = TRUE), nS = sum(is.finite(R))), by = gene]
   s[nS >= 3]
 }
-G <- fread(file.path(outd, "gain_iv.tsv"))[model == "A"]
+G <- fread(file.path(outd, "gain_iv_p1order.tsv"))[model == "A"]   # first-named allele as reference
 res <- list()
 for (g in HYB) for (mt in METHODS) {
   ii <- X[group == g & method == mt & model == "A" & term == "inter", .(gene, ei = eff)]

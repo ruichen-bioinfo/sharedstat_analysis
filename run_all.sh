@@ -29,6 +29,7 @@ run() {
 }
 rm -f "$LOG/FAILED"
 run scripts/crossspecies/02_fay_multimethod.R
+run scripts/crossspecies/02b_p1order_refit.R   # S. paradoxus x S. kudriavzevii refitted with the first-named allele as reference
 run scripts/pipeline/03_comparisons_registry.R
 run scripts/hsf1/07_hsf1_locus_extract.R
 run scripts/hsf1/101_p1_reliability_vs_iv_sim.R
@@ -54,6 +55,8 @@ run scripts/hsf1/103b_p2_torc1_panel.R
 run scripts/hsf1/104b_p2_class_split.R
 run scripts/crossspecies/11_gain_iv.R
 GAIN_IV_SELECT=padj run scripts/crossspecies/11_gain_iv.R
+P1_ORDER=name run scripts/crossspecies/11_gain_iv.R   # first-named allele as reference; writes the *_p1order tables used by P1
+P1_ORDER=name GAIN_IV_SELECT=padj run scripts/crossspecies/11_gain_iv.R
 run scripts/pipeline/20_batch_run.R
 run scripts/hsf1/29_geo_published_lfc_check.R
 run scripts/hsf1/32_fig_p1_grid.R

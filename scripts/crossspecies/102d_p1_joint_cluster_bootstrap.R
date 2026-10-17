@@ -8,7 +8,7 @@ root <- Sys.getenv("PBL_ROOT"); csd <- file.path(root, "data/02_processed/crosss
 HYB <- c("ScxSk","ScxSp","ScxSu","SkxSu","SpxSk","SpxSu"); METHODS <- c("DESeq2","edgeR","limma"); PRIOR <- 2
 partner <- c(ScxSp="SkxSu",SkxSu="ScxSp",ScxSu="SpxSk",SpxSk="ScxSu",ScxSk="SpxSu",SpxSu="ScxSk")
 args <- commandArgs(TRUE); KS <- if (length(args)) as.integer(args) else c(100L, 50L, 200L, 0L); NB <- 2000L
-X <- fread(cmd = paste("zcat", shQuote(file.path(csd, "fay_multimethod.tsv.gz"))))[condition == "heat" & group %in% HYB]
+X <- fread(cmd = paste("zcat", shQuote(file.path(csd, "fay_multimethod_p1order.tsv.gz"))))[condition == "heat" & group %in% HYB]   # SpxSk refitted with the first-named allele as reference
 Rtab <- X[model == "A" & term == "time", .(gene, group, method, R = eff)]
 inst <- function(g, mt) { keep <- setdiff(HYB, c(g, partner[[g]]))
   Rtab[group %in% keep & method == mt, .(S = mean(R, na.rm = TRUE), nS = sum(is.finite(R))), by = gene][nS >= 3] }

@@ -32,26 +32,29 @@ check <- function(label, observed, printed, tol, unit = "") {
   invisible(pass)
 }
 
-G <- fread(file.path(csd, "gain_iv.tsv"))
+G <- fread(file.path(csd, "gain_iv_p1order.tsv"))   # first-named allele is the reference
 A <- G[model == "A"]
 ## the summary convention used throughout
 MED <- A[, .(ols = median(slope_ols), iv = median(slope_iv), art = median(artefact),
-             pct = median(100 * abs(artefact) / abs(slope_ols))), by = group]
+             pct = median(100 * abs(artefact) / abs(slope_ols)),
+             pct41 = 100 * abs(median(artefact)) / abs(median(slope_ols))), by = group]   # Table 1 (script 41) convention
 
 say("=== P1 summary quantities, recomputed from the landed cross-species tables ===")
-check("artefact as % of naive slope, minimum",  min(MED$pct),  30,     0.5, "%")   # reading (i) of 11_gain_iv.R: no significance filter
-check("artefact as % of naive slope, maximum",  max(MED$pct),  117,    0.5, "%")
+## the two % checks use script 41's |median artefact| / |median slope|, the convention of Table 1 and the text
+## (38.6-232.6%, printed 39 and 233); the median of per-method % (MED$pct) gives 38.4-234.5% and is kept for the log below.
+check("artefact as % of naive slope, minimum",  min(MED$pct41),  39,     0.5, "%")   # reading (i) of 11_gain_iv.R: no significance filter
+check("artefact as % of naive slope, maximum",  max(MED$pct41),  233,    0.5, "%")
 check("fold range of the artefact across units",
-      max(abs(MED$art)) / min(abs(MED$art)), 3.4, 0.1, "x")
-sp <- MED[group == "SpxSu"]
-check("sign-reversing unit, naive slope",  sp$ols,  -0.115, 5e-4)
-check("sign-reversing unit, corrected",    sp$iv,   +0.020, 5e-4)
+      max(abs(MED$art)) / min(abs(MED$art)), 2.8, 0.1, "x")
+sp <- MED[group == "SpxSk"]   # SpxSk is the hybrid whose instrumented slope changes sign
+check("sign-reversing unit, naive slope",  sp$ols,  -0.068, 5e-4)
+check("sign-reversing unit, corrected",    sp$iv,   +0.091, 5e-4)
 
-CO <- fread(file.path(csd, "gain_components.tsv"))
+CO <- fread(file.path(csd, "gain_components_p1order.tsv"))   # first-named allele as reference
 check("rank of the naive-first unit after correction",
-      CO[rank_ols == 1L, rank_iv], 5, 0)
+      CO[rank_ols == 1L, rank_iv], 4, 0)
 check("Spearman(naive order, corrected order)",
-      cor(CO$rank_ols, CO$rank_iv, method = "spearman"), 0.314, 5e-4)
+      cor(CO$rank_ols, CO$rank_iv, method = "spearman"), 0.429, 5e-4)
 
 ## The reliability intervals determine the interval-based count. The
 ## point-estimate counts are also recomputed so their difference from the interval-based counts is explicit.
@@ -104,6 +107,6 @@ for (i in seq_len(nrow(MED))) say("%-8s %10.4f %10.4f %10.4f %8.1f%%",
 
 L <- rbindlist(lock)
 fwrite(L, file.path(root, "data/02_processed/hsf1/p1_a1_provenance_lock.tsv"), sep = "\t")
-say("\nwrote p1_a1_provenance_lock.tsv (%d claims, %d passing)", nrow(L), sum(L$pass))
+say("\nwrote P1 provenance table (%d claims, %d passing)", nrow(L), sum(L$pass))
 if (!ok) { say("\nAT LEAST ONE P1 SUMMARY VALUE DOES NOT REPRODUCE."); quit(status = 1L) }
 say("\nAll P1 summary values reproduce from the saved tables.")

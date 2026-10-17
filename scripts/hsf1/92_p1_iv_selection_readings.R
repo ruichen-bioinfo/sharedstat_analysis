@@ -16,7 +16,7 @@ partner <- c(ScxSp="SkxSu",SkxSu="ScxSp",ScxSu="SpxSk",SpxSk="ScxSu",ScxSk="SpxS
 say <- function(...) cat(sprintf(...), "\n", sep = "")
 set.seed(20260905)
 
-X <- fread(cmd = paste("zcat", shQuote(file.path(outd, "fay_multimethod.tsv.gz"))))
+X <- fread(cmd = paste("zcat", shQuote(file.path(outd, "fay_multimethod_p1order.tsv.gz"))))   # SpxSk refitted with the first-named allele as reference
 X <- X[condition == "heat" & group %in% HYB]
 Rtab <- X[model == "A" & term == "time", .(gene, group, method, R = eff, padj_t = padj)]
 instrument <- function(g, mt) {

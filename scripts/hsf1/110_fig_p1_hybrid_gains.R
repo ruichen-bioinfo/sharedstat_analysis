@@ -14,7 +14,7 @@ LAB <- c(ScxSk = "S. cerevisiae × S. kudriavzevii", ScxSp = "S. cerevisiae × S
          SkxSu = "S. kudriavzevii × S. uvarum", SpxSk = "S. paradoxus × S. kudriavzevii", SpxSu = "S. paradoxus × S. uvarum")
 draw <- function() {
   par(mar = c(3.6, 13.2, 5.6, 0.8)); y <- seq_len(nrow(D)); off <- c(0.27, 0.09, -0.09, -0.27)
-  plot(NA, xlim = c(0.6, 1.1), ylim = c(0.5, nrow(D) + 0.5), yaxt = "n", xlab = "gain (1 = no divergence)", ylab = "")
+  plot(NA, xlim = c(0.6, 1.25), ylim = c(0.5, nrow(D) + 0.5), yaxt = "n", xlab = "gain (1 = no divergence)", ylab = "")
   axis(2, at = y, labels = FALSE); text(par("usr")[1] - 0.012, y, LAB[D$group], adj = 1, xpd = NA, cex = CEX_TXT, font = 3)
   abline(v = 1, lty = 2, col = CHARCOAL, lwd = LW$ref)
   segments(D$rel_lo, y + off[2], D$rel_hi, y + off[2], col = PAL$rel, lwd = LW$ci)

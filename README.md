@@ -31,7 +31,7 @@ serves all three. It holds only what reproduces the reported numbers and figures
 | `manifests/EXTERNAL_INPUTS.tsv` | the public input files the scripts read and that are not in this record, with source URL, fetch date, size and sha256 |
 | `ENVIRONMENT/` | R `sessionInfo()`, installed R package versions and the conda package list |
 | `proofs/lean/` | Lean 4 (v4.14.0, Mathlib) checks of the algebra in P1 Supplementary Note S2 |
-| `REPRODUCTION.md` | the result of rerunning everything |
+| `REPRODUCTION.md` | the result of rerunning everything, and what was rerun for version 1.0.1 |
 | `SHA256SUMS.txt` | checksums of every file |
 
 The number tables are candidate lists: a value can also appear by coincidence in an unrelated column. Sections that report no results (data availability, acknowledgements, references, disclosures) are not included.
@@ -83,6 +83,30 @@ headline numbers from the tables and stops on a mismatch.
 The Lean file: install elan, then in `proofs/lean/` run `lake exe cache get`, `lake build` and
 `lake env lean check_axioms.lean`. Each of the 14 theorems depends only on `propext`, `Classical.choice` and
 `Quot.sound`.
+
+## Changes in version 1.0.1
+
+In the cross-species model fits (`scripts/crossspecies/02_fay_multimethod.R`) the allele factor takes its levels in
+alphabetical order, so each hybrid's reference allele is the alphabetically first one. In five of the six hybrids that
+is the first-named allele. In *S. paradoxus* × *S. kudriavzevii* it made *S. kudriavzevii* the reference, while the
+reliability and the P1 manuscript use the first-named allele, *S. paradoxus*.
+
+Version 1.0.1 refits that hybrid with *S. paradoxus* as reference. `scripts/crossspecies/02b_p1order_refit.R`
+(which uses the helper `scripts/crossspecies/p1_orientation.R` in one of its checks) writes
+`fay_multimethod_p1order.tsv.gz`, in which only the rows of that hybrid differ from `fay_multimethod.tsv.gz`, and
+`scripts/crossspecies/11_gain_iv.R` run with `P1_ORDER=name` writes `gain_iv_p1order.tsv`,
+`gain_iv_padj_filter_p1order.tsv` and `gain_components_p1order.tsv` from it. Scripts 12, 102, 102c and 102d in
+`scripts/crossspecies/` and 37, 41, 92 and 94 in `scripts/hsf1/` now read these tables. The P1 tables that depend on
+them (`iv_breakdown.tsv`, `p1_iv_selection_readings.tsv`, `p1_table1_iv_widened.tsv`, `p1_table1_joint_bootstrap.tsv`,
+`p1_table1_uncertainty.tsv` and `hsf1/p1_anchor_diagnosis.tsv`), P1 Table 1 (`TABLE1_per_hybrid.md`) and P1 Figure 5
+(`FP1_5_hybrid_gains`, drawn by script 110 with a wider gain axis) were regenerated. All other tables and figures,
+including `fay_multimethod.tsv.gz` and the alphabetical-order tables of script 11, are unchanged from version 1.0.0.
+`run_all.sh` runs the refit after step 1 and the two name-order runs of script 11 after its alphabetical runs.
+`run_all.sh` and `fetch_inputs.sh` are now stored as executable files, so `./fetch_inputs.sh` and `./run_all.sh` run
+as described under Running.
+For this version only the scripts named above were rerun, first in the analysis tree and then in a copy of this
+record. The second run reproduced every table listed here byte for byte, and Figure 5 apart from the creation date
+stored in the PDF. Details are in `REPRODUCTION.md`.
 
 ## Licence
 

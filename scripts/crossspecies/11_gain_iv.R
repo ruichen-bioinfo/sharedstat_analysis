@@ -77,9 +77,17 @@ say <- function(...) cat(sprintf(...), "\n", sep = "")
 set.seed(20260905)
 SELECT <- Sys.getenv("GAIN_IV_SELECT", "none"); stopifnot(SELECT %in% c("none", "padj"))
 SUFFIX <- if (SELECT == "padj") "_padj_filter" else ""
+## P1_ORDER=name reads fay_multimethod_p1order.tsv.gz (SpxSk refitted with its first-named allele, Sp, as
+## reference by 02b_p1order_refit.R), uses name order in the orientation code of sections 3-5, and writes *_p1order
+## outputs. The default (alphabetical) mode is unchanged and still reads and writes the original file names.
+ORDER <- Sys.getenv("P1_ORDER", "alpha"); stopifnot(ORDER %in% c("alpha", "name"))
+if (ORDER == "name") SUFFIX <- paste0(SUFFIX, "_p1order")
+FAY <- if (ORDER == "name") "fay_multimethod_p1order.tsv.gz" else "fay_multimethod.tsv.gz"
+alleles <- function(g) { a <- unlist(strsplit(g, "x")); if (ORDER == "name") a else sort(a) }
 say("=== 11_gain_iv | %s | gene selection: %s ===", format(Sys.time()), SELECT)
 
-X <- fread(cmd = paste("zcat", shQuote(file.path(outd, "fay_multimethod.tsv.gz"))))
+X <- fread(cmd = paste("zcat", shQuote(file.path(outd, FAY))))
+if (ORDER == "name") say("allele order: first-named allele as reference, fits from %s", FAY)
 X <- X[condition == "heat" & group %in% HYB]
 
 ## R = reference allele response, per cross x method (model A only: `time` is not
@@ -159,7 +167,7 @@ fwrite(s, file.path(outd, paste0("gain_components", SUFFIX, ".tsv")), sep = "\t"
 ## ------------------------------------- (3) does the IV gain track thermal niche? ----
 say("\n=== (3) thermal niche and isolation source, tested on the IV gain ===")
 orient <- function(g, axis) {
-  a <- sort(unlist(strsplit(g, "x")))
+  a <- alleles(g)
   k1 <- CLS[sp == a[1]][[axis]]; k2 <- CLS[sp == a[2]][[axis]]
   if (k1 == k2) return(NA_integer_)
   pos <- if (axis == "thermal") "cryo" else "wild"
@@ -171,7 +179,7 @@ for (axis in c("thermal","source")) {
   say("%-8s %-30s %9s %9s %-22s", "cross","classes","slope_IV","95% CI","oriented")
   vals <- c()
   for (g in HYB) {
-    a <- sort(unlist(strsplit(g, "x")))
+    a <- alleles(g)
     fl <- orient(g, axis)
     r <- G[group == g & model == "A"]
     iv <- median(r$slope_iv)
@@ -190,8 +198,8 @@ for (axis in c("thermal","source")) {
 say("\nlargest |IV gain| overall: %s", G[model == "A"][which.max(abs(slope_iv)),
     sprintf("%s (slope %+.4f, gain %.3f) -- a %s x %s pair",
             group, slope_iv, gain_iv,
-            CLS[sp == sort(unlist(strsplit(group,"x")))[1], thermal],
-            CLS[sp == sort(unlist(strsplit(group,"x")))[2], thermal])])
+            CLS[sp == alleles(group)[1], thermal],
+            CLS[sp == alleles(group)[2], thermal])])
 
 ## ------------------------ (4) is the additive species model immune to the artefact? --
 ## The artefact adds roughly -(1-h) * R to every cross's interaction effect, and R is
@@ -200,7 +208,7 @@ say("\nlargest |IV gain| overall: %s", G[model == "A"][which.max(abs(slope_iv)),
 ## Tested by injecting an artefact of the observed magnitude and refitting.
 say("\n=== (4) additive four-species model: artefact injection test ===")
 Dm <- matrix(0, 6, 4, dimnames = list(HYB, SPECIES))
-for (g in HYB) { a <- sort(unlist(strsplit(g, "x"))); Dm[g, a[1]] <- -1; Dm[g, a[2]] <- 1 }
+for (g in HYB) { a <- alleles(g); Dm[g, a[1]] <- -1; Dm[g, a[2]] <- 1 }
 Dc <- Dm %*% (diag(4) - matrix(1/4, 4, 4))
 Hm <- Dc %*% MASS::ginv(Dc); Gi <- MASS::ginv(Dc)
 say("Dc %%*%% 1 = (%s) -- the design cannot fit a constant, so a constant artefact",
@@ -252,7 +260,7 @@ say("frac>0 = fraction favouring the cryophilic allele (matched pairs: the 2nd a
 say("%-8s %-22s %-7s %-9s %7s %8s %11s", "cross","axis","method","direction","n","frac>0","binom_p")
 resP <- list()
 for (g in HYB) for (mt in METHODS) {
-  a <- sort(unlist(strsplit(g, "x")))
+  a <- alleles(g)
   fl <- orient(g, "thermal"); ax <- if (is.na(fl)) "matched (null channel)" else "cryo vs thermo"
   keep <- setdiff(HYB, c(g, partner[[g]]))
   ## independent mask: significant shared response in at least two other crosses, and its

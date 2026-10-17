@@ -13,7 +13,7 @@ suppressPackageStartupMessages({ library(data.table) })
 root <- Sys.getenv("PBL_ROOT", "<PBL_ROOT>")
 say  <- function(...) cat(sprintf(...), "\n")
 
-d <- fread(file.path(root, "data/02_processed/crossspecies/gain_iv.tsv"))
+d <- fread(file.path(root, "data/02_processed/crossspecies/gain_iv_p1order.tsv"))   # first-named allele is the reference
 a <- d[model == "A"]
 stopifnot(nrow(a) == 18L, length(unique(a$method)) == 3L, length(unique(a$group)) == 6L)
 
@@ -35,22 +35,22 @@ gate <- function(what, got, want, tol) {
   say("  %-52s %9.4f vs %8.4f  %s", what, got, want, if (ok) "OK" else "MISMATCH")
   if (!ok) stop(sprintf("fidelity gate failed: %s", what))
 }
-gate("smallest artefact share (%)",  min(tab$artefact_pct), 30.369, 5e-3)   # reading (i) of 11_gain_iv.R: no significance filter
-gate("largest artefact share (%)",   max(tab$artefact_pct), 117.067, 5e-3)
+gate("smallest artefact share (%)",  min(tab$artefact_pct), 38.629, 5e-3)   # reading (i) of 11_gain_iv.R: no significance filter
+gate("largest artefact share (%)",   max(tab$artefact_pct), 232.650, 5e-3)
 gate("rank correlation of the two orderings",
-     cor(tab$rank_naive, tab$rank_iv, method = "spearman"), 0.3143, 5e-4)
+     cor(tab$rank_naive, tab$rank_iv, method = "spearman"), 0.4286, 5e-4)
 gate("ScxSk naive rank",  tab[group == "ScxSk"]$rank_naive, 1, 1e-9)
 gate("ScxSk naive gain",  tab[group == "ScxSk"]$naive, 0.6487, 5e-4)
-gate("ScxSp corrected gain (most divergent)", tab[group == "ScxSp"]$gain_iv, 0.8016, 5e-4)   # gain = 1 + slope_IV, reading (i)
-gate("SpxSu corrected gain (crosses one)",    tab[group == "SpxSu"]$gain_iv, 1.0195, 5e-4)   # gain = 1 + slope_IV, reading (i)
-gate("ScxSk instrumented rank", tab[group == "ScxSk"]$rank_iv, 5, 1e-9)
+gate("ScxSp corrected gain (most divergent)", tab[group == "ScxSp"]$gain_iv, 0.8293, 5e-4)   # gain = 1 + slope_IV, reading (i)
+gate("SpxSu corrected gain",                  tab[group == "SpxSu"]$gain_iv, 0.9848, 5e-4)   # gain = 1 + slope_IV, reading (i)
+gate("ScxSk instrumented rank", tab[group == "ScxSk"]$rank_iv, 4, 1e-9)
 ## the one hybrid whose inferred direction changes: the naive slope is negative, the corrected gain is
 ## above one, so a reported decrease becomes an increase
 ## With both columns as gains, the reversal is "a reported attenuation that is really none":
 ## naive gain below one, corrected gain above it.
 sign_flip <- tab[naive < 1 & gain_iv > 1]
 say("  %-52s %s", "hybrid whose direction changes", paste(sign_flip$group, collapse = ", "))
-stopifnot(nrow(sign_flip) == 1L, sign_flip$group == "SpxSu")
+stopifnot(nrow(sign_flip) == 1L, sign_flip$group == "SpxSk")
 
 ## species abbreviations spelled out, because a table should be readable without the Methods
 NAME <- c(ScxSk = "S. cerevisiae × S. kudriavzevii", ScxSp = "S. cerevisiae × S. paradoxus",

@@ -17,7 +17,7 @@ partner<-c(ScxSp="SkxSu",SkxSu="ScxSp",ScxSu="SpxSk",SpxSk="ScxSu",ScxSk="SpxSu"
 say <- function(...) cat(sprintf(...), "\n", sep = "")
 
 ## --- Table 1 gene set: the genes 11_gain_iv.R keeps, per hybrid (union over methods) ---
-X<-fread(cmd=paste("zcat",shQuote(file.path(csd,"fay_multimethod.tsv.gz"))))
+X<-fread(cmd=paste("zcat",shQuote(file.path(csd,"fay_multimethod_p1order.tsv.gz"))))   # SpxSk refitted with the first-named allele (Sp) as reference
 X<-X[condition=="heat" & group%in%HYB]
 Rtab<-X[model=="A" & term=="time",.(gene,group,method,R=eff,padj_t=padj)]
 ## genes with reference-arm padj<0.05 (the filter of 11_gain_iv.R), and all finite (no filter)
@@ -27,7 +27,7 @@ tbl1_genes <- function(g, filtered=TRUE){
   unique(d$gene)
 }
 ## implied reference-arm h under IV validity = naive_gain / gain_iv = (1+slope_ols)/(1+slope_iv)
-gi<-fread(file.path(csd,"gain_iv.tsv"))[model=="A"]
+gi<-fread(file.path(csd,"gain_iv_p1order.tsv"))[model=="A"]   # first-named allele as reference
 med<-function(g,col) median(gi[group==g,get(col)])
 implied<-sapply(HYB,function(g){ (1+med(g,"slope_ols"))/(1+med(g,"slope_iv")) })
 

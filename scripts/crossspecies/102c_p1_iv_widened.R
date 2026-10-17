@@ -6,7 +6,7 @@
 suppressPackageStartupMessages(library(data.table))
 root <- Sys.getenv("PBL_ROOT"); cs <- file.path(root, "data/02_processed/crossspecies"); hs <- file.path(root, "data/02_processed/hsf1")
 T <- fread(file.path(cs, "p1_table1_uncertainty.tsv"))
-N <- fread(file.path(cs, "gain_iv.tsv"))[model == "A", .(n = median(n)), by = group]
+N <- fread(file.path(cs, "gain_iv_p1order.tsv"))[model == "A", .(n = median(n)), by = group]   # first-named allele as reference
 R <- fread(file.path(hs, "p1_intergene_correlation.tsv"))[, .(rho = weighted.mean(rho, n_genes), rho_al = weighted.mean(rho_allele_level, n_genes)), by = .(group = hybrid)]
 T <- merge(merge(T, N, by = "group"), R, by = "group")
 w <- function(v) sqrt(1 + (T$n - 1) * v)

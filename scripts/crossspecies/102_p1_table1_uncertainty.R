@@ -8,7 +8,7 @@ suppressPackageStartupMessages(library(data.table))
 root <- Sys.getenv("PBL_ROOT", unset = normalizePath(".")); outd <- file.path(root, "data/02_processed/crossspecies")
 HYB <- c("ScxSk","ScxSp","ScxSu","SkxSu","SpxSk","SpxSu"); METHODS <- c("DESeq2","edgeR","limma")
 partner <- c(ScxSp="SkxSu",SkxSu="ScxSp",ScxSu="SpxSk",SpxSk="ScxSu",ScxSk="SpxSu",SpxSu="ScxSk")
-X <- fread(cmd = paste("zcat", shQuote(file.path(outd, "fay_multimethod.tsv.gz"))))[condition == "heat" & group %in% HYB]
+X <- fread(cmd = paste("zcat", shQuote(file.path(outd, "fay_multimethod_p1order.tsv.gz"))))[condition == "heat" & group %in% HYB]   # SpxSk refitted with the first-named allele as reference
 Rtab <- X[model == "A" & term == "time", .(gene, group, method, R = eff)]
 inst <- function(g, mt) { keep <- setdiff(HYB, c(g, partner[[g]]))
   Rtab[group %in% keep & method == mt, .(S = mean(R, na.rm = TRUE), nS = sum(is.finite(R))), by = gene][nS >= 3] }
@@ -17,7 +17,7 @@ FS <- rbindlist(lapply(HYB, function(g) rbindlist(lapply(METHODS, function(mt) {
   D <- merge(merge(ii, Rtab[group == g & method == mt, .(gene, R)], by = "gene"), inst(g, mt), by = "gene")
   D <- D[is.finite(ei) & is.finite(R) & is.finite(S)]
   data.table(group = g, method = mt, n = nrow(D), first_stage_r = cor(D$R, D$S)) }))))
-GI <- fread(file.path(outd, "gain_iv.tsv"))[model == "A"]
+GI <- fread(file.path(outd, "gain_iv_p1order.tsv"))[model == "A"]   # first-named allele as reference
 chk <- merge(GI, FS, by = c("group", "method")); stopifnot(all(chk$n.x == chk$n.y))
 T <- GI[, .(naive = median(1 + slope_ols), iv = median(gain_iv), iv_lo = 1 + median(iv_lo), iv_hi = 1 + median(iv_hi)), by = group]
 T <- merge(T, FS[, .(first_stage_r = median(first_stage_r)), by = group], by = "group")
